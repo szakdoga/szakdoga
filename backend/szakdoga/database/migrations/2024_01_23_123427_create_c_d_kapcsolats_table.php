@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('c_d_kapcsolats', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('cegId')->references('userId')->on('cegs');
+            $table->foreignId('szakId')->references('szakId')->on('szaks');
             $table->timestamps();
         });
     }

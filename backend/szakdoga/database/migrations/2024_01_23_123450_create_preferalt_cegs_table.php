@@ -14,7 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::create('preferalt_cegs', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('diakId')->references('userId')->on('diaks');
+            $table->foreignId('szakId')->references('szakId')->on('szaks');
             $table->timestamps();
         });
     }

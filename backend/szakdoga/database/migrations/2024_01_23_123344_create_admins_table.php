@@ -14,7 +14,7 @@ return new class extends Migration
     public function up()
     {
         Schema::create('admins', function (Blueprint $table) {
-            $table->id();
+            $table->foreignId('userId')->references('userId')->on('felhasznalos');
             $table->timestamps();
         });
     }

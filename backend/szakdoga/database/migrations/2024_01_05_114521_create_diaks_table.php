@@ -14,7 +14,6 @@ return new class extends Migration
     public function up()
     {
         Schema::create('diaks', function (Blueprint $table) {
-            $table->id('diakId');
             $table->string('nev');
             $table->date('szulDatum');
             $table->string('email');

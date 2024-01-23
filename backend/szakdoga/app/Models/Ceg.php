@@ -9,8 +9,6 @@ class Ceg extends Model
 {
     use HasFactory;
 
-    protected  $primaryKey = 'cegId';
-
     protected $fillable = [
         'nev',
         'tel',
