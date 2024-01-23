@@ -16,7 +16,7 @@ class FelhasznaloController extends Controller
     {
         $felhasznalo = new Felhasznalo();
         $felhasznalo->felNev = $request->felNev;
-        $felhasznalo->jelszo = bcrypt($request->jelszo);
+        $felhasznalo->jelszo = $request->jelszo;
         $felhasznalo->jogId = $request->jogId;
         $felhasznalo->save();
 
