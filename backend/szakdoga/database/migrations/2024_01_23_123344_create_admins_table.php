@@ -15,6 +15,8 @@ return new class extends Migration
     {
         Schema::create('admins', function (Blueprint $table) {
             $table->foreignId('userId')->references('userId')->on('felhasznalos');
+            $table->string('nev');
+            $table->string('email');
             $table->timestamps();
         });
     }

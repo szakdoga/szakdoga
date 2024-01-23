@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class PreferaltCeg extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'userId',
+        'cegId',
+    ];
 }
