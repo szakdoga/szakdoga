@@ -23,26 +23,29 @@ Route::get('/', function () {
 });
 //Szak
 Route::get('/szakok', [SzakController::class, 'index']);
-Route::get('/szakok/create', [SzakController::class, 'create']);
+Route::post('/szakok/create', [SzakController::class, 'store']);
 Route::get('/szakok/{id}', [SzakController::class, 'show']);
-Route::get('/szakok/{id}', [SzakController::class, 'update']);
+Route::put('/szakok/{id}', [SzakController::class, 'update']);
 //Jogosultsag
 Route::get('/jogosultsagok', [JogosultsagController::class, 'index']);
-Route::get('/jogosultsagok/create', [JogosultsagController::class, 'create']);
+Route::post('/jogosultsagok/create', [JogosultsagController::class, 'store']);
 Route::get('/jogosultsagok/{id}', [JogosultsagController::class, 'show']);
-Route::get('/jogosultsagok/{id}/edit', [JogosultsagController::class, 'update']);
+Route::put('/jogosultsagok/{id}/edit', [JogosultsagController::class, 'update']);
 //Felhasznalo
 Route::get('/felhasznalok', [FelhasznaloController::class, 'index']);
-Route::get('/felhasznalok/create', [FelhasznaloController::class, 'create']);
+Route::post('/felhasznalok/create', [FelhasznaloController::class, 'store']);
 Route::get('/felhasznalok/{id}', [FelhasznaloController::class, 'show']);
-Route::get('/felhasznalok/{id}/edit', [FelhasznaloController::class, 'edit']);
+Route::put('/felhasznalok/{id}/edit', [FelhasznaloController::class, 'edit']);
+Route::delete('/felhasznalok/{id}/delete', [FelhasznaloController::class, 'destroy']);
 // Diak
 Route::get('/diakok', [DiakController::class, 'index']);
-Route::get('/diakok/create', [DiakController::class, 'create']);
+Route::post('/diakok/create', [DiakController::class, 'store']);
 Route::get('/diakok/{id}', [DiakController::class, 'show']);
-Route::get('/diakok/{id}/edit', [DiakController::class, 'edit']);
+Route::put('/diakok/{id}/edit', [DiakController::class, 'edit']);
+Route::delete('/diakok/{id}/delete', [DiakController::class, 'destroy']);
 //Ceg
 Route::get('/cegek', [CegController::class, 'index']);
-Route::get('/cegek/create', [CegController::class, 'create']);
+Route::post('/cegek/create', [CegController::class, 'store']);
 Route::get('/cegek/{id}', [CegController::class, 'show']);
-Route::get('/cegek/{id}/edit', [CegController::class, 'edit']);
+Route::put('/cegek/{id}/edit', [CegController::class, 'edit']);
+Route::delete('/cegek/{id}/delete', [CegController::class, 'destroy']);
