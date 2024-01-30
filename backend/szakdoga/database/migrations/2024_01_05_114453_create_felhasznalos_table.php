@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('felhasznalos', function (Blueprint $table) {
             $table->id('userId');
-            $table->string('felNev');
+            $table->string('felNev')->unique();
             $table->string('jelszo');
             $table->foreignId('jogId')->references('jogId')->on('jogosultsags');
             $table->timestamps();

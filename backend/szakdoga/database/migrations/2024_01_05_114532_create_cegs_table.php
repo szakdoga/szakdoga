@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('tel');
             $table->string('kapcsNeve');
             $table->string('cim');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->foreignId('userId')->references('userId')->on('felhasznalos');
             $table->foreignId('szakId')->references('szakId')->on('szaks');
             $table->timestamps();

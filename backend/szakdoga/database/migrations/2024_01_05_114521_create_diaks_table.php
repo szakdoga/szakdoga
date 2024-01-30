@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('diaks', function (Blueprint $table) {
             $table->string('nev');
             $table->date('szulDatum');
-            $table->string('email');
+            $table->string('email')->unique();
             $table->string('tel');
             $table->string('fax');
             $table->string('lakcim');
