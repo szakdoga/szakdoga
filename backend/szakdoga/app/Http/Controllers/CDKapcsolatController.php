@@ -23,14 +23,14 @@ class CDKapcsolatController extends Controller
         return $cdKapcs;
     }
 
-    public function show($id)
+    public function show($diakId, $cegId)
     {
-        return CDKapcsolat::find($id);
+        return CDKapcsolat::where('diakId', $diakId)->where('cegId', $cegId)->first();
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $diakId, $cegId)
     {
-        $cdKapcs = CDKapcsolat::find($id);
+        $cdKapcs = CDKapcsolat::where('diakId', $diakId)->where('cegId', $cegId)->first();
         if ($cdKapcs) {
             $cdKapcs->diakId = $request->diakId;
             $cdKapcs->cegId = $request->cegId;
@@ -40,9 +40,9 @@ class CDKapcsolatController extends Controller
         return $cdKapcs;
     }
 
-    public function destroy($id)
+    public function destroy($diakId, $cegId)
     {
-        $cdKapcs = CDKapcsolat::find($id);
+        $cdKapcs = CDKapcsolat::where('diakId', $diakId)->where('cegId', $cegId)->first();
         if ($cdKapcs) {
             $cdKapcs->delete();
         }

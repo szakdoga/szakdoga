@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Szak;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,6 +19,9 @@ return new class extends Migration
             $table->string('megnevezes');
             $table->timestamps();
         });
+
+        Szak::create(["megnevezes"=>"Szoftver"]);
+        Szak::create(["megnevezes"=>"Iru"]);
     }
 
     /**
@@ -29,4 +33,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('szaks');
     }
+    
 };
