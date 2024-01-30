@@ -1,9 +1,13 @@
 <?php
 
+use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CDKapcsolatController;
 use App\Http\Controllers\CegController;
 use App\Http\Controllers\DiakController;
 use App\Http\Controllers\FelhasznaloController;
 use App\Http\Controllers\JogosultsagController;
+use App\Http\Controllers\KovetelmenyController;
+use App\Http\Controllers\PreferaltCegController;
 use App\Http\Controllers\SzakController;
 use Illuminate\Support\Facades\Route;
 
@@ -42,10 +46,28 @@ Route::get('/diakok', [DiakController::class, 'index']);
 Route::post('/diakok/create', [DiakController::class, 'store']);
 Route::get('/diakok/{id}', [DiakController::class, 'show']);
 Route::put('/diakok/{id}/edit', [DiakController::class, 'update']);
-Route::delete('/diakok/{id}/delete', [DiakController::class, 'destroy']);
 //Ceg
 Route::get('/cegek', [CegController::class, 'index']);
 Route::post('/cegek/create', [CegController::class, 'store']);
 Route::get('/cegek/{id}', [CegController::class, 'show']);
 Route::put('/cegek/{id}/edit', [CegController::class, 'update']);
-Route::delete('/cegek/{id}/delete', [CegController::class, 'destroy']);
+//Admin
+Route::get('/admin', [AdminController::class, 'index']);
+Route::post('/admin/create', [AdminController::class, 'store']);
+Route::get('/admin/{id}', [AdminController::class, 'show']);
+Route::put('/admin/{id}/edit', [AdminController::class, 'update']);
+//Kovetelmeny
+Route::get('/kovetelmenyek', [KovetelmenyController::class, 'index']);
+Route::post('/kovetelmenyek/create', [KovetelmenyController::class, 'store']);
+Route::get('/kovetelmenyek/{id}', [KovetelmenyController::class, 'show']);
+Route::put('/kovetelmenyek/{id}/edit', [KovetelmenyController::class, 'update']);
+//Preferáltcég
+Route::get('/preferalt', [PreferaltCegController::class, 'index']);
+Route::post('/fpreferalt/create', [PreferaltCegController::class, 'store']);
+Route::get('/preferalt/{id}', [PreferaltCegController::class, 'show']);
+Route::put('/preferalt/{id}/edit', [PreferaltCegController::class, 'update']);
+//C_D_Kapcsolat
+Route::get('/kapcsolatok', [CDKapcsolatController::class, 'index']);
+Route::post('/kapcsolatok/create', [CDKapcsolatController::class, 'store']);
+Route::get('/kapcsolatok/{id}', [CDKapcsolatController::class, 'show']);
+Route::put('/kapcsolatok/{id}/edit', [CDKapcsolatController::class, 'update']);

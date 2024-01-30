@@ -36,12 +36,4 @@ class JogosultsagController extends Controller
 
         return $jogosultsag;
     }
-
-    public function destroy($id)
-    {
-        $jogosultsag = Jogosultsag::find($id);
-        if ($jogosultsag) {
-            $jogosultsag->delete();
-        }
-    }
 }

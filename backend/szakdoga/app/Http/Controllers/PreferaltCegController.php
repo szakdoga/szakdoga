@@ -40,11 +40,4 @@ class PreferaltCegController extends Controller
         return $prefceg;
     }
 
-    public function destroy($id)
-    {
-        $prefceg = PreferaltCeg::find($id);
-        if ($prefceg) {
-            $prefceg->delete();
-        }
-    }
 }
