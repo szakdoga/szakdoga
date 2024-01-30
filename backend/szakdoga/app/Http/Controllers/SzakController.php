@@ -37,11 +37,4 @@ class SzakController extends Controller
         return $szak;
     }
 
-    public function destroy($id)
-    {
-        $szak = Szak::find($id);
-        if ($szak) {
-            $szak->delete();
-        }
-    }
 }

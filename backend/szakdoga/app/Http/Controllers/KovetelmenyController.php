@@ -41,11 +41,4 @@ class KovetelmenyController extends Controller
         return $kovetelmeny;
     }
 
-    public function destroy($id)
-    {
-        $kovetelmeny = Kovetelmeny::find($id);
-        if ($kovetelmeny) {
-            $kovetelmeny->delete();
-        }
-    }
 }
