@@ -20,6 +20,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
+<<<<<<< HEAD
 
         Szak::create([
             'megnevezes' => "Szoftver", 
@@ -28,6 +29,10 @@ return new class extends Migration
         Szak::create([
             'megnevezes' => "IRU", 
         ]);
+=======
+        Szak::create(["megnevezes"=>"Szoftver"]);
+        Szak::create(["megnevezes"=>"Iru"]);
+>>>>>>> e2679fd8aeb77a733952f66852f23125879d446a
     }
 
     /**
@@ -39,4 +44,5 @@ return new class extends Migration
     {
         Schema::dropIfExists('szaks');
     }
+    
 };
