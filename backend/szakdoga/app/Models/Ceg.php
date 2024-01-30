@@ -15,7 +15,6 @@ class Ceg extends Model
         'kapcsNeve',
         'cim',
         'email',
-        'userId',
-        'szakId'
+        'userId'
     ];
 }

@@ -20,7 +20,6 @@ return new class extends Migration
             $table->string('cim');
             $table->string('email');
             $table->foreignId('userId')->references('userId')->on('felhasznalos');
-            $table->foreignId('szakId')->references('szakId')->on('szaks');
             $table->timestamps();
         });
     }
