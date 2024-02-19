@@ -23,12 +23,12 @@ class DiakController extends Controller
 
     public function show($userId)
     {
-        return Diak::where('userId', $userId);
+        return Diak::where('userId', $userId)->get();
     }
 
     public function update(Request $request, $userId)
     {
-        $diak = Diak::find('userId', $userId);
+        return Diak::where('userId', $userId)->get();
         if ($diak) {
             $diak->fill($request->all());
             $diak->save();
