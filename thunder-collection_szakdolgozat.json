@@ -1,148 +1,237 @@
 {
     "client": "Thunder Client",
     "collectionName": "szakdolgozat",
-    "dateExported": "2024-01-30T14:22:52.667Z",
+    "dateExported": "2024-02-19T21:19:50.659Z",
     "version": "1.1",
     "folders": [
         {
-            "_id": "eeb82e19-fd46-42bb-8b6e-f0968d29d868",
+            "_id": "29533d17-93e8-4650-81c8-b52622decbe7",
             "name": "szak",
             "containerId": "",
-            "created": "2024-01-30T13:58:23.437Z",
+            "created": "2024-02-18T19:06:32.389Z",
             "sortNum": 10000
         },
         {
-            "_id": "fde44f24-a4d6-483f-886d-067f49c17fc0",
+            "_id": "86577056-5433-4778-b258-de73642940eb",
             "name": "jogosultsag",
             "containerId": "",
-            "created": "2024-01-30T13:58:43.795Z",
+            "created": "2024-02-18T19:06:32.390Z",
             "sortNum": 20000
         },
         {
-            "_id": "59e30f4a-0104-4cfa-972f-c2eb319fe1b8",
+            "_id": "eece5576-e341-459f-acc7-1db20d1d5ff9",
             "name": "felhasznalo",
             "containerId": "",
-            "created": "2024-01-30T13:59:09.130Z",
+            "created": "2024-02-18T19:06:32.391Z",
             "sortNum": 30000
         },
         {
-            "_id": "21561713-fea4-41bd-bda5-b6cfb7eadef3",
+            "_id": "f02ae6b1-df26-4f1b-86e0-c3c6cde13312",
             "name": "diak",
             "containerId": "",
-            "created": "2024-01-30T14:00:09.714Z",
+            "created": "2024-02-18T19:06:32.392Z",
             "sortNum": 40000
         }
     ],
     "requests": [
         {
-            "_id": "63e6015a-4d16-4836-81a0-88cda85d40a6",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "eeb82e19-fd46-42bb-8b6e-f0968d29d868",
+            "_id": "fa0a52f1-06a7-4d1a-95f8-8a269868b392",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "29533d17-93e8-4650-81c8-b52622decbe7",
             "name": "szak_index",
             "url": "localhost:8000/szakok",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2024-01-30T12:19:11.167Z",
-            "modified": "2024-01-30T12:30:58.767Z",
+            "created": "2024-02-18T19:06:32.389Z",
+            "modified": "2024-02-18T19:06:32.389Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "fdb37bac-d17d-4ca3-9607-dbc21587b6ff",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "fde44f24-a4d6-483f-886d-067f49c17fc0",
+            "_id": "d292c177-0d65-444a-bfa0-86cc4f0b46fa",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "86577056-5433-4778-b258-de73642940eb",
             "name": "jogosultsag_index",
             "url": "localhost:8000/jogosultsagok",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2024-01-30T13:48:33.979Z",
-            "modified": "2024-01-30T13:49:27.075Z",
+            "created": "2024-02-18T19:06:32.395Z",
+            "modified": "2024-02-18T19:06:32.395Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "87d22220-ca7d-47d0-b98e-7b1c7811dc31",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "59e30f4a-0104-4cfa-972f-c2eb319fe1b8",
+            "_id": "a7b1cf29-8ad2-4902-a225-2f84eaa1e7cd",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "eece5576-e341-459f-acc7-1db20d1d5ff9",
             "name": "felhasznalo_index",
             "url": "localhost:8000/felhasznalok",
             "method": "GET",
             "sortNum": 10000,
-            "created": "2024-01-30T13:51:05.011Z",
-            "modified": "2024-01-30T13:54:14.570Z",
+            "created": "2024-02-18T19:06:32.400Z",
+            "modified": "2024-02-18T19:06:32.400Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "34b67a85-bb76-4f32-bd8a-0481e9e07c7b",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "eeb82e19-fd46-42bb-8b6e-f0968d29d868",
+            "_id": "75df7e5e-e931-4f96-84e5-554126c125a5",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "29533d17-93e8-4650-81c8-b52622decbe7",
             "name": "szak_show",
             "url": "localhost:8000/szakok/1",
             "method": "GET",
             "sortNum": 20000,
-            "created": "2024-01-30T13:27:30.796Z",
-            "modified": "2024-01-30T13:27:39.860Z",
+            "created": "2024-02-18T19:06:32.393Z",
+            "modified": "2024-02-18T19:06:32.393Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "ba154771-8b23-4fe9-bff1-b3843870b353",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "fde44f24-a4d6-483f-886d-067f49c17fc0",
+            "_id": "af5426e8-0288-4925-a0f8-d388e448a988",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "86577056-5433-4778-b258-de73642940eb",
             "name": "jogosultsag_show",
             "url": "localhost:8000/jogosultsagok/1",
             "method": "GET",
             "sortNum": 20000,
-            "created": "2024-01-30T13:48:37.603Z",
-            "modified": "2024-01-30T13:49:34.707Z",
+            "created": "2024-02-18T19:06:32.397Z",
+            "modified": "2024-02-18T19:06:32.397Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "e6630524-a22e-420e-b3c8-ac1dcc02c10a",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "59e30f4a-0104-4cfa-972f-c2eb319fe1b8",
+            "_id": "12d68339-0ba2-4730-8b12-96a33852c0a8",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "eece5576-e341-459f-acc7-1db20d1d5ff9",
             "name": "felhasznalo_show",
             "url": "localhost:8000/felhasznalok/1",
             "method": "GET",
             "sortNum": 20000,
-            "created": "2024-01-30T13:51:02.940Z",
-            "modified": "2024-01-30T13:54:20.446Z",
+            "created": "2024-02-18T19:06:32.399Z",
+            "modified": "2024-02-18T19:06:32.399Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "5c754a4f-5852-4908-a371-18d00161a83e",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "21561713-fea4-41bd-bda5-b6cfb7eadef3",
+            "_id": "a83dfe41-0fd5-4834-8d9c-be685d07eebb",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "f02ae6b1-df26-4f1b-86e0-c3c6cde13312",
             "name": "diak_index",
             "url": "localhost:8000/diakok",
             "method": "GET",
             "sortNum": 20000,
-            "created": "2024-01-30T14:01:11.066Z",
-            "modified": "2024-01-30T14:01:46.285Z",
+            "created": "2024-02-18T19:06:32.403Z",
+            "modified": "2024-02-18T19:06:32.403Z",
             "headers": [],
             "params": [],
             "tests": []
         },
         {
-            "_id": "7adba060-5265-4601-86d8-3fb8cbdbb687",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "21561713-fea4-41bd-bda5-b6cfb7eadef3",
+            "_id": "cf64fd2e-66f7-413d-8070-48a2c7eb38b9",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "f02ae6b1-df26-4f1b-86e0-c3c6cde13312",
+            "name": "diak_show",
+            "url": "localhost:8000/diakok/1",
+            "method": "GET",
+            "sortNum": 22500,
+            "created": "2024-02-18T19:06:32.405Z",
+            "modified": "2024-02-18T19:32:53.317Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [],
+            "tests": []
+        },
+        {
+            "_id": "53f0bde9-f603-4022-b8ca-4f776dd26651",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "f02ae6b1-df26-4f1b-86e0-c3c6cde13312",
+            "name": "diak_update",
+            "url": "localhost:8000/diakok/1/edit?nev=Cactus Jack&szulDatum=2003-01-20&email=jackcactus@gmail.com&tel=88899888&fax=88899888&lakcim=Két utca&neme=boxolo&allampolg=spartai&szakId=2",
+            "method": "PUT",
+            "sortNum": 23750,
+            "created": "2024-02-18T19:06:32.404Z",
+            "modified": "2024-02-18T19:43:20.208Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
+            "params": [
+                {
+                    "name": "nev",
+                    "value": "Cactus Jack",
+                    "isPath": false
+                },
+                {
+                    "name": "szulDatum",
+                    "value": "2003-01-20",
+                    "isPath": false
+                },
+                {
+                    "name": "email",
+                    "value": "jackcactus@gmail.com",
+                    "isPath": false
+                },
+                {
+                    "name": "tel",
+                    "value": "88899888",
+                    "isPath": false
+                },
+                {
+                    "name": "fax",
+                    "value": "88899888",
+                    "isPath": false
+                },
+                {
+                    "name": "lakcim",
+                    "value": "Két utca",
+                    "isPath": false
+                },
+                {
+                    "name": "neme",
+                    "value": "boxolo",
+                    "isPath": false
+                },
+                {
+                    "name": "allampolg",
+                    "value": "spartai",
+                    "isPath": false
+                },
+                {
+                    "name": "szakId",
+                    "value": "2",
+                    "isPath": false
+                }
+            ],
+            "tests": []
+        },
+        {
+            "_id": "422876aa-82f8-40cf-8f37-29814e298d67",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "f02ae6b1-df26-4f1b-86e0-c3c6cde13312",
             "name": "diak_store",
             "url": "localhost:8000/diakok/create?nev=Cactus&szulDatum=2003-01-20&email=jackjohnson@gmail.com&tel=88899888&fax=88899888&lakcim=Két utca&neme=boxolo&allampolg=spartai&szakId=2&userId=1",
             "method": "POST",
             "sortNum": 25000,
-            "created": "2024-01-30T14:00:44.682Z",
-            "modified": "2024-01-30T14:08:27.923Z",
-            "headers": [],
+            "created": "2024-02-18T19:06:32.402Z",
+            "modified": "2024-02-18T19:17:23.603Z",
+            "headers": [
+                {
+                    "name": "Accept",
+                    "value": "application/json"
+                }
+            ],
             "params": [
                 {
                     "name": "nev",
@@ -198,15 +287,15 @@
             "tests": []
         },
         {
-            "_id": "d2deb6ad-5b72-406c-95bf-f2dd9d7a6723",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "eeb82e19-fd46-42bb-8b6e-f0968d29d868",
+            "_id": "52167b24-2796-4d12-b771-d04baadb4590",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "29533d17-93e8-4650-81c8-b52622decbe7",
             "name": "szak_update",
             "url": "localhost:8000/szakok/edit/1?megnevezes=Rendszergazda",
             "method": "PUT",
             "sortNum": 30000,
-            "created": "2024-01-30T12:31:23.131Z",
-            "modified": "2024-01-30T12:39:49.499Z",
+            "created": "2024-02-18T19:06:32.391Z",
+            "modified": "2024-02-18T19:06:32.391Z",
             "headers": [],
             "params": [
                 {
@@ -218,15 +307,15 @@
             "tests": []
         },
         {
-            "_id": "caf1bd2f-dacb-4d79-ac69-953f2685c237",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "fde44f24-a4d6-483f-886d-067f49c17fc0",
+            "_id": "c67f2744-f2f6-4e6e-ad2d-3fb4e394b673",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "86577056-5433-4778-b258-de73642940eb",
             "name": "jogosultsag_update",
             "url": "localhost:8000/jogosultsagok/1/edit?megnevezes=Admin",
             "method": "PUT",
             "sortNum": 30000,
-            "created": "2024-01-30T13:48:36.259Z",
-            "modified": "2024-01-30T13:50:13.904Z",
+            "created": "2024-02-18T19:06:32.396Z",
+            "modified": "2024-02-18T19:06:32.396Z",
             "headers": [],
             "params": [
                 {
@@ -238,15 +327,15 @@
             "tests": []
         },
         {
-            "_id": "ca9313ca-2ed5-4061-a673-8f7fb9098df8",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "59e30f4a-0104-4cfa-972f-c2eb319fe1b8",
+            "_id": "b2d47195-3c81-4a64-905e-84ce1bf09469",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "eece5576-e341-459f-acc7-1db20d1d5ff9",
             "name": "felhasznalo_update",
             "url": "localhost:8000/felhasznalok/1/edit?felNev=User1&jelszo=User012@&jogId=1",
             "method": "PUT",
             "sortNum": 30000,
-            "created": "2024-01-30T13:51:00.811Z",
-            "modified": "2024-01-30T13:56:51.281Z",
+            "created": "2024-02-18T19:06:32.398Z",
+            "modified": "2024-02-18T19:06:32.398Z",
             "headers": [],
             "params": [
                 {
@@ -268,80 +357,15 @@
             "tests": []
         },
         {
-            "_id": "a5d470bd-9886-4ade-8231-433f46dd6895",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "21561713-fea4-41bd-bda5-b6cfb7eadef3",
-            "name": "diak_update",
-            "url": "localhost:8000/diakok/{userId}/edit?nev=Cactus Jack&szulDatum=2003-01-20&email=jackcactus@gmail.com&tel=88899888&fax=88899888&lakcim=Két utca&neme=boxolo&allampolg=spartai&szakId=2",
-            "method": "PUT",
-            "sortNum": 30000,
-            "created": "2024-01-30T14:01:13.082Z",
-            "modified": "2024-01-30T14:20:46.436Z",
-            "headers": [],
-            "params": [
-                {
-                    "name": "userId",
-                    "value": "2",
-                    "isPath": true
-                },
-                {
-                    "name": "nev",
-                    "value": "Cactus Jack",
-                    "isPath": false
-                },
-                {
-                    "name": "szulDatum",
-                    "value": "2003-01-20",
-                    "isPath": false
-                },
-                {
-                    "name": "email",
-                    "value": "jackcactus@gmail.com",
-                    "isPath": false
-                },
-                {
-                    "name": "tel",
-                    "value": "88899888",
-                    "isPath": false
-                },
-                {
-                    "name": "fax",
-                    "value": "88899888",
-                    "isPath": false
-                },
-                {
-                    "name": "lakcim",
-                    "value": "Két utca",
-                    "isPath": false
-                },
-                {
-                    "name": "neme",
-                    "value": "boxolo",
-                    "isPath": false
-                },
-                {
-                    "name": "allampolg",
-                    "value": "spartai",
-                    "isPath": false
-                },
-                {
-                    "name": "szakId",
-                    "value": "2",
-                    "isPath": false
-                }
-            ],
-            "tests": []
-        },
-        {
-            "_id": "6ee887ad-4462-459f-9600-c73abf555847",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "eeb82e19-fd46-42bb-8b6e-f0968d29d868",
+            "_id": "f706ad03-c20b-44f5-bb7c-4809cd34223b",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "29533d17-93e8-4650-81c8-b52622decbe7",
             "name": "szak_store",
             "url": "localhost:8000/szakok/create?megnevezes=Soft",
             "method": "POST",
             "sortNum": 40000,
-            "created": "2024-01-30T13:24:59.527Z",
-            "modified": "2024-01-30T13:26:22.549Z",
+            "created": "2024-02-18T19:06:32.392Z",
+            "modified": "2024-02-18T19:06:32.392Z",
             "headers": [],
             "params": [
                 {
@@ -353,15 +377,15 @@
             "tests": []
         },
         {
-            "_id": "4a497232-0804-4e6d-85b8-18b091f5562b",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "fde44f24-a4d6-483f-886d-067f49c17fc0",
+            "_id": "33200f5c-87d1-4d30-a4b1-b57b34578710",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "86577056-5433-4778-b258-de73642940eb",
             "name": "jogosultsag_store",
             "url": "localhost:8000/jogosultsagok/create?megnevezes=Ceg",
             "method": "POST",
             "sortNum": 40000,
-            "created": "2024-01-30T13:46:27.724Z",
-            "modified": "2024-01-30T13:48:11.711Z",
+            "created": "2024-02-18T19:06:32.394Z",
+            "modified": "2024-02-18T19:06:32.394Z",
             "headers": [],
             "params": [
                 {
@@ -373,45 +397,15 @@
             "tests": []
         },
         {
-            "_id": "b181625b-6eef-4231-8631-8ed7dca41235",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "59e30f4a-0104-4cfa-972f-c2eb319fe1b8",
+            "_id": "c3a2fd90-3bed-42e2-8251-b76509d990b6",
+            "colId": "d49d38b2-2cec-4d32-91de-6e67c9a32b06",
+            "containerId": "eece5576-e341-459f-acc7-1db20d1d5ff9",
             "name": "felhasznalo_store",
             "url": "localhost:8000/felhasznalok/create?felNev=User2&jelszo=User567@&jogId=2",
             "method": "POST",
             "sortNum": 40000,
-            "created": "2024-01-30T13:57:04.674Z",
-            "modified": "2024-01-30T13:58:01.317Z",
-            "headers": [],
-            "params": [
-                {
-                    "name": "felNev",
-                    "value": "User2",
-                    "isPath": false
-                },
-                {
-                    "name": "jelszo",
-                    "value": "User567@",
-                    "isPath": false
-                },
-                {
-                    "name": "jogId",
-                    "value": "2",
-                    "isPath": false
-                }
-            ],
-            "tests": []
-        },
-        {
-            "_id": "a82eb247-d19c-47de-8068-ee6743a9853f",
-            "colId": "ad27d08c-99ef-43f3-b36d-df2ea52dc3a6",
-            "containerId": "21561713-fea4-41bd-bda5-b6cfb7eadef3",
-            "name": "diak_show",
-            "url": "localhost:8000/felhasznalok/create?felNev=User2&jelszo=User567@&jogId=2",
-            "method": "POST",
-            "sortNum": 40000,
-            "created": "2024-01-30T14:01:14.593Z",
-            "modified": "2024-01-30T14:01:14.593Z",
+            "created": "2024-02-18T19:06:32.401Z",
+            "modified": "2024-02-18T19:06:32.401Z",
             "headers": [],
             "params": [
                 {
