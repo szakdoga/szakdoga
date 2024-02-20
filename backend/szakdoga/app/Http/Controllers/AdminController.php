@@ -16,7 +16,7 @@ class AdminController extends Controller
     public function store(Request $request)
     {
         $admin = new Admin();
-        $admin ->userId = $request->userId;
+        $admin->fill($request->all());
         $admin->save();
 
         return $admin;
@@ -27,24 +27,21 @@ class AdminController extends Controller
         return Admin::find($id);
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $userId)
     {
-        $admin  = Admin::find($id);
+        $admin = Admin::where('userId', $userId)->first();
         if ($admin) {
-            $admin = new Admin();
-            $admin ->userId = $request->userId;
-            
-            $admin ->save();
+            $admin->fill($request->all());
+            $admin->save();
         }
-
-        return $$admin;
+        return $admin;
     }
 
     public function destroy($id)
     {
         $admin = Admin::find($id);
-        if ($admin ) {
-            $admin ->delete();
+        if ($admin) {
+            $admin->delete();
         }
     }
 }

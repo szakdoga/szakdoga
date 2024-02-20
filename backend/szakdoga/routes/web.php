@@ -49,8 +49,8 @@ Route::put('/diakok/{userId}/edit', [DiakController::class, 'update']);
 //Ceg
 Route::get('/cegek', [CegController::class, 'index']);
 Route::post('/cegek/create', [CegController::class, 'store']);
-Route::get('/cegek/{id}', [CegController::class, 'show']);
-Route::put('/cegek/{id}/edit', [CegController::class, 'update']);
+Route::get('/cegek/{userId}', [CegController::class, 'show']);
+Route::put('/cegek/{userId}/edit', [CegController::class, 'update']);
 //Admin
 Route::get('/admin', [AdminController::class, 'index']);
 Route::post('/admin/create', [AdminController::class, 'store']);
@@ -59,18 +59,18 @@ Route::put('/admin/{id}/edit', [AdminController::class, 'update']);
 //Kovetelmeny
 Route::get('/kovetelmenyek', [KovetelmenyController::class, 'index']);
 Route::post('/kovetelmenyek/create', [KovetelmenyController::class, 'store']);
-Route::get('/kovetelmenyek/{id}', [KovetelmenyController::class, 'show']);
-Route::put('/kovetelmenyek/{id}/edit', [KovetelmenyController::class, 'update']);
+Route::get('/kovetelmenyek/{cegId}', [KovetelmenyController::class, 'show']);
+Route::put('/kovetelmenyek/{cegId}/edit', [KovetelmenyController::class, 'update']);
 //Preferáltcég
 Route::get('/preferalt', [PreferaltCegController::class, 'index']);
-Route::post('/fpreferalt/create', [PreferaltCegController::class, 'store']);
-Route::get('/preferalt/{id}', [PreferaltCegController::class, 'show']);
-Route::put('/preferalt/{id}/edit', [PreferaltCegController::class, 'update']);
+Route::post('/preferalt/create', [PreferaltCegController::class, 'store']);
+Route::get('/preferalt/{diakId}/{cegId}', [PreferaltCegController::class, 'show']);
+Route::put('/preferalt/{diakId}/{cegId}/edit', [PreferaltCegController::class, 'update']);
 //C_D_Kapcsolat
 Route::get('/kapcsolatok', [CDKapcsolatController::class, 'index']);
 Route::post('/kapcsolatok/create', [CDKapcsolatController::class, 'store']);
-Route::get('/kapcsolatok/{id}', [CDKapcsolatController::class, 'show']);
-Route::put('/kapcsolatok/{id}/edit', [CDKapcsolatController::class, 'update']);
+Route::get('/kapcsolatok/{diakId}/{cegId}', [CDKapcsolatController::class, 'show']);
+Route::put('/kapcsolatok/{diakId}/{cegId}/edit', [CDKapcsolatController::class, 'update']);
 
 require __DIR__.'/auth.php';
 

@@ -8,9 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Ceg extends Model
 {
     use HasFactory;
+    protected $primaryKey = 'userId';
 
     protected $fillable = [
-        'nev',
+        'neve',
         'tel',
         'kapcsNeve',
         'cim',

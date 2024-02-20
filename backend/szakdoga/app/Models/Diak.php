@@ -9,6 +9,7 @@ class Diak extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = "userId";
 
     protected $fillable = [
         'nev',

@@ -16,6 +16,7 @@ return new class extends Migration
         Schema::create('kovetelmenies', function (Blueprint $table) {
             $table->foreignId('cegId')->references('userId')->on('cegs');
             $table->foreignId('szakId')->references('szakId')->on('szaks');
+            $table->integer('fo');
             $table->timestamps();
         });
     }

@@ -21,14 +21,14 @@ class CegController extends Controller
         return $ceg;
     }
 
-    public function show($id)
+    public function show($userId)
     {
-        return Ceg::find($id);
+        return Ceg::where('userId', $userId)->get();
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $userId)
     {
-        $ceg = Ceg::find($id);
+        $ceg = Ceg::find($userId);
         if ($ceg) {
             $ceg->fill($request->all());
             $ceg->save();

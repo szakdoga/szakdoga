@@ -12,33 +12,30 @@ class KovetelmenyController extends Controller
         return Kovetelmeny::all();
     }
 
+
     public function store(Request $request)
     {
         $kovetelmeny = new Kovetelmeny();
-        $kovetelmeny->cegId = $request->cegId;
-        $kovetelmeny->szakId = $request->szakId;
+        $kovetelmeny->fill($request->all());
         $kovetelmeny->save();
 
         return $kovetelmeny;
     }
 
-    public function show($id)
+    public function show($cegId)
     {
-        return Kovetelmeny::find($id);
+        return Kovetelmeny::where('cegId', $cegId)->get();
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $cegId)
     {
-        $kovetelmeny = Kovetelmeny::find($id);
+
+        $kovetelmeny = Kovetelmeny::find($cegId);
         if ($kovetelmeny) {
-            $kovetelmeny = new Kovetelmeny();
-            $kovetelmeny->cegId = $request->cegId;
-            $kovetelmeny->szakId = $request->szakId;
-            
+            $kovetelmeny->fill($request->all());
             $kovetelmeny->save();
         }
 
         return $kovetelmeny;
     }
-
 }

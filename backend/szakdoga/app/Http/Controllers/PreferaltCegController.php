@@ -15,29 +15,29 @@ class PreferaltCegController extends Controller
 
     public function store(Request $request)
     {
-        $prefceg = new PreferaltCeg();
-        $prefceg->diakId = $request->diakId;
-        $prefceg->cegId = $request->cegId;
-        $prefceg->save();
+        $preferalt = new PreferaltCeg();
+        $preferalt->diakId = $request->diakId;
+        $preferalt->cegId = $request->cegId;
+        $preferalt->save();
 
-        return $prefceg;
+        return $preferalt;
     }
 
-    public function show($id)
+    public function show($diakId, $cegId)
     {
-        return PreferaltCeg::find($id);
+        return PreferaltCeg::where('diakId', $diakId)->where('cegId', $cegId)->first();
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, $diakId, $cegId)
     {
-        $prefceg = PreferaltCeg::find($id);
-        if ($prefceg) {
-            $prefceg->diakId = $request->diakId;
-            $prefceg->cegId = $request->cegId;
-            $prefceg->save();
+        $preferalt = PreferaltCeg::where('diakId', $diakId)->where('cegId', $cegId)->first();
+        if ($preferalt) {
+            $preferalt->diakId = $request->diakId;
+            $preferalt->cegId = $request->cegId;
+            $preferalt->save();
         }
 
-        return $prefceg;
+        return $preferalt;
     }
 
 }

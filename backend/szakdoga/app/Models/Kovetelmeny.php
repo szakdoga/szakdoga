@@ -9,8 +9,11 @@ class Kovetelmeny extends Model
 {
     use HasFactory;
 
+    protected $primaryKey = 'cegId';
+    
     protected $fillable = [
         'cegId',
-        'szakId'
+        'szakId',
+        'fo'
     ];
 }
