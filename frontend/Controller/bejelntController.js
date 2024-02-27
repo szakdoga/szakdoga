@@ -1,5 +1,6 @@
 import bejelntModel from "../Model/bejelntModel.js";
 import BejelentkezesView from "../View/bejelntView.js";
+import DataService import dataService from '../Model/DataService.js';
 class BejelntkezesController {
     constructor() {
         const adat = { username: "", jelszo: "" };
@@ -9,12 +10,17 @@ class BejelntkezesController {
         const view = new BejelentkezesView(model.getAdat(), szuloElem);
         window.addEventListener("bejelentkezes", this.bejelentkezes.bind(this, model));
     }
-
-    bejelentkezes(model, event) {
+    async bejelentkezes(model, event) {
         event.preventDefault();
-        const adat = event.detail;
+        const adat = model.getAdat();
         console.log("Felhasználónév:", adat.username);
         console.log("Jelszó:", adat.jelszo);
+        try {
+            const response = await this.dataService.bejelentkezes(adat.username, adat.jelszo);
+            console.log("Bejelentkezési válasz:", response);
+        } catch (error) {
+            console.error("Bejelentkezési hiba:", error);
+        }
     }
 }
 

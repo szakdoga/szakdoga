@@ -75,6 +75,19 @@ class DataService {
         errorCallback(error);
       });
   }
+
+  async bejelentkezes(username, jelszo) {
+    try {
+        const response = await axios.post('/login', { username, jelszo });
+        console.log("Bejelentkezés sikeres!", response.data);
+        return response.data;
+    } catch (error) {
+        console.error("Bejelentkezési hiba:", error.response ? error.response.data : error);
+        throw error;
+    }
+  }
+
 }
+
 
 export default DataService;
