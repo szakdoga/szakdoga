@@ -1,0 +1,19 @@
+import bejelntModel from "../Model/bejelntModel.js";
+import BejelentkezesView from "../View/bejelntView.js";
+class BejelntkezesController{
+    constructor() {
+        const adat = { username: "", jelszo: "" };
+        const model = new bejelntModel(adat);
+        const szuloElem = document.querySelector(".bejelentkezes");
+        const view = new BejelentkezesView(model.getAdat(), szuloElem);
+        view.submitElem.addEventListener("click", this.handleBejelentkezes.bind(this, model));
+    }
+
+    handleBejelentkezes(model, event) {
+        event.preventDefault();
+        const adat = model.getAdat();
+        console.log("Felhasználónév:", adat.username);
+        console.log("Jelszó:", adat.jelszo);
+    }
+}
+export default BejelntkezesController;

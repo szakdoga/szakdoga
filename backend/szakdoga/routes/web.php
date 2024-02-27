@@ -72,6 +72,10 @@ Route::post('/kapcsolatok/create', [CDKapcsolatController::class, 'store']);
 Route::get('/kapcsolatok/{diakId}/{cegId}', [CDKapcsolatController::class, 'show']);
 Route::put('/kapcsolatok/{diakId}/{cegId}/edit', [CDKapcsolatController::class, 'update']);
 
+Route::get('/token', function () {
+    return request()->session()->token();
+});
+
 require __DIR__.'/auth.php';
 
 
