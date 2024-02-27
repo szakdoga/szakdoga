@@ -6,33 +6,36 @@ class RegisztracioView {
     this.szuloElem.innerHTML = `
         <form>
         <div class="mb-3 mt-3">
-          <label for="email" class="form-label"> Felhasználónév: </label>
+          <label for="felNev" class="form-label"> Felhasználónév: </label>
           <input
             type="text"
             class="form-control"
             id="felNev"
             placeholder="felhasználónév"
             name="felNev"
+            value="${this.#adat.felNev}"
           />
         </div>
         <div class="mb-3">
-          <label for="pwd" class="form-label"> Jelszó: </label>
+          <label for="jelszo" class="form-label"> Jelszó: </label>
           <input
             type="password"
             class="form-control"
             id="jelszo"
             placeholder="jelszó"
             name="jelszo"
+            value="${this.#adat.jelszo}"
           />
         </div>
         <div class="mb-3">
-            <label for="pwd" class="form-label"> Jelszó megerősítése: </label>
+            <label for="jelszoMeg" class="form-label"> Jelszó megerősítése: </label>
             <input
               type="password"
               class="form-control"
               id="jelszoMeg"
               placeholder="jelszó megerősítése"
               name="jelszoMeg"
+              value="${this.#adat.jelszoMeg}"
             />
           </div>
         <div class="text-center">

@@ -5,6 +5,7 @@ class BejelntkezesController{
         const adat = { username: "", jelszo: "" };
         const model = new bejelntModel(adat);
         const szuloElem = document.querySelector(".bejelentkezes");
+        console.log(szuloElem)
         const view = new BejelentkezesView(model.getAdat(), szuloElem);
         view.submitElem.addEventListener("click", this.handleBejelentkezes.bind(this, model));
     }
