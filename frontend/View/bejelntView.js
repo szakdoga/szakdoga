@@ -5,22 +5,19 @@ class BejelentkezesView {
         this.szuloElem = szuloElem;
         this.szuloElem.innerHTML = `
             <form>
-                <div class="forms-group">
-                    <label for="username">${this.#adat.username}:</label>
+                <div class="mb-3">
+                    <label for="username" class="form-label">FelhasználóNév:</label>
                     <input type="text" class="form-control" id="username" name="username" value="${this.#adat.username}">
                 </div>
-                <div class="forms-group">
-                    <label for="jelszo">${this.#adat.jelszo}:</label>
+                <div class="mb-3">
+                    <label for="jelszo" class="form-label">Jelszó:</label>
                     <input type="password" class="form-control" id="jelszo" name="jelszo" value="${this.#adat.jelszo}">
                 </div>
-                <div>
-                    <button type="button" class="btn btn-primary" id="submit">Bejelentkezés</button>
-                </div>
+                <button type="submit" class="btn btn-primary" id="submit">Bejelentkezés</button>
             </form>
         `;
         this.formElem = this.szuloElem.querySelector("form");
-        this.submitElem = this.formElem.querySelector("#submit");
-        this.submitElem.addEventListener("click", this.onSubmit.bind(this));
+        this.formElem.addEventListener("submit", this.onSubmit.bind(this));
     }
 
     onSubmit(event) {
