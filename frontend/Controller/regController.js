@@ -15,6 +15,7 @@ class RegController{
         const adat = model.getAdat();
         console.log("Felhasználónév:", adat.felNev);
         console.log("Jelszó:", adat.jelszo);
+        console.log("Jelszó:", adat.jelszoMeg);
     }
 }
 export default RegController;
