@@ -53,18 +53,21 @@ class RegisztracioView {
     this.formElem = this.szuloElem.querySelector("form");
     this.submitElem = this.formElem.querySelector("#submit");
     this.submitElem.addEventListener("click", this.onSubmit.bind(this));
+
+    /*this.submitElem.on("click",()=>{
+        this.#esemenyLetrehozas("post");
+    })*/
   }
 
   onSubmit(event) {
     event.preventDefault();
     this.#adatGyujt();
-    this.#esemenyTrigger("regisztracio");
+    this.#esemenyTrigger("post");
   }
 
   #adatGyujt() {
     this.#adat.felNev = document.getElementById("felNev").value;
     this.#adat.jelszo = document.getElementById("jelszo").value;
-    this.#adat.jelszoMeg = document.getElementById("jelszoMeg").value;
   }
 
   #esemenyTrigger(esemenyNev) {

@@ -1,4 +1,4 @@
-class BejelntkezesModel{
+class BejelentkezesModel{
     #adat = {};
     constructor(adat) {
         this.#adat = adat;
@@ -8,4 +8,4 @@ class BejelntkezesModel{
         return this.#adat;
     }
 }
-export default BejelntkezesModel;
+export default BejelentkezesModel;

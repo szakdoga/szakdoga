@@ -1,9 +1,9 @@
-import bejelntModel from "../Model/bejelntModel.js";
-import BejelentkezesView from "../View/bejelntView.js";
-class BejelntkezesController{
+import BejelentkezesModel from "../Model/BejelentModel.js";
+import BejelentkezesView from "../View/BejelentView.js";
+class BejelentkezesController{
     constructor() {
         const adat = { username: "", jelszo: "" };
-        const model = new bejelntModel(adat);
+        const model = new BejelentkezesModel(adat);
         const szuloElem = document.querySelector(".bejelentkezes");
         console.log(szuloElem)
         const view = new BejelentkezesView(model.getAdat(), szuloElem);
@@ -17,4 +17,4 @@ class BejelntkezesController{
         console.log("Jelszó:", adat.jelszo);
     }
 }
-export default BejelntkezesController;
+export default BejelentkezesController;

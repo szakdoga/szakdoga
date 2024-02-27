@@ -1,4 +1,4 @@
-import bejelntController from "./Controller/bejelntController.js";
+import bejelntController from "./Controller/BejelentController.js";
 import RegController from "./Controller/regController.js";
 $(function () {
   const currentUrl = window.location.href;
