@@ -6,10 +6,10 @@ class BejelntkezesController{
         const model = new bejelntModel(adat);
         const szuloElem = document.querySelector(".bejelentkezes");
         const view = new BejelentkezesView(model.getAdat(), szuloElem);
-        view.submitElem.addEventListener("click", this.handleBejelentkezes.bind(this, model));
+        view.submitElem.addEventListener("click", this.bejelentkezes.bind(this, model));
     }
 
-    handleBejelentkezes(model, event) {
+    bejelentkezes(model, event) {
         event.preventDefault();
         const adat = model.getAdat();
         console.log("Felhasználónév:", adat.username);
