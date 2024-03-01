@@ -3,7 +3,7 @@ import RegisztracioView from "../View/regView.js";
 import DataService from "../Model/DataService.js";
 class RegController{
     constructor() {
-        const adat = {felNev: "", jelszo: "" , jogId: 1};
+        const adat = {felNev: "", jelszo: "" , jogId: ""};
         const model = new RegisztracioModel(adat);
         const szuloElem = document.querySelector(".regisztracio");
         console.log(szuloElem);
@@ -14,9 +14,8 @@ class RegController{
         this.dataService = new DataService();
 
         $(window).on("post", (event) => {
-            let id = 1;
             console.log(event.detail);
-            this.dataService.postData("/felhasznalok/create", event.detail);
+            //this.dataService.postData("/felhasznalok/create", event.detail);
           });
     }
 

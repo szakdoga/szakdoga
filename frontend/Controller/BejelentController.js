@@ -1,5 +1,5 @@
-import bejelntModel from "../Model/bejelntModel.js";
-import BejelentkezesView from "../View/bejelntView.js";
+import BejelentkezesModel from "../Model/BejelentModel.js";
+import BejelentkezesView from "../View/BejelentView.js";
 
 class BejelntkezesController {
     constructor() {
