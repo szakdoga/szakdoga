@@ -1,5 +1,3 @@
-
-
 class DataService {
   constructor() {
     axios.defaults.baseURL = "http://localhost:8000/";
@@ -76,17 +74,21 @@ class DataService {
   }
 
   async bejelentkezes(username, jelszo) {
+    console.log(`Küldött adatok: felhasználónév: ${username}, jelszó: ${jelszo}`);
     try {
-        const response = await axios.post('/login', { username, jelszo });
-        console.log("Bejelentkezés sikeres!", response.data);
-        return response.data;
+      const response = await axios.post("/login", { felNev: username, jelszo });
+      if (response.data && response.data.token) {
+        console.log("Bejelentkezve");
+        return { success: true, data: response.data };
+      } else {
+        console.log("Nincs ilyen felhasználó vagy hibás jelszó.");
+        return { success: false, message: "Nincs ilyen felhasználó vagy hibás jelszó" };
+      }
     } catch (error) {
-        console.error("Bejelentkezési hiba:", error.response ? error.response.data : error);
-        throw error;
+      console.error("Bejelentkezési hiba:", error.response ? error.response.data : error);
+      return { success: false, message: "Bejelentkezési hiba" };
     }
-  }
-
 }
-
+}
 
 export default DataService;

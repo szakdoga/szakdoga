@@ -1,5 +1,6 @@
 import BejelentkezesModel from "../Model/BejelentModel.js";
 import BejelentkezesView from "../View/BejelentView.js";
+import DataService from "../Model/DataService.js";
 
 class BejelntkezesController {
     constructor() {
@@ -9,6 +10,7 @@ class BejelntkezesController {
         console.log(szuloElem)
         const view = new BejelentkezesView(model.getAdat(), szuloElem);
         window.addEventListener("bejelentkezes", this.bejelentkezes.bind(this, model));
+        this.dataService = new DataService();
     }
     async bejelentkezes(model, event) {
         event.preventDefault();
