@@ -41,6 +41,7 @@ Route::post('/felhasznalok/create', [FelhasznaloController::class, 'store']);
 Route::get('/felhasznalok/{id}', [FelhasznaloController::class, 'show']);
 Route::put('/felhasznalok/{id}/edit', [FelhasznaloController::class, 'update']);
 Route::delete('/felhasznalok/{id}/delete', [FelhasznaloController::class, 'destroy']);
+Route::post('/login', [FelhasznaloController::class, 'login']);
 // Diak
 Route::get('/diakok', [DiakController::class, 'index']);
 Route::post('/diakok/create', [DiakController::class, 'store']);

@@ -15,7 +15,7 @@ class RegController{
 
         $(window).on("post", (event) => {
             console.log(event.detail);
-            //this.dataService.postData("/felhasznalok/create", event.detail);
+            this.dataService.postData("/felhasznalok/create", event.detail);
           });
     }
 
