@@ -22,6 +22,7 @@ return new class extends Migration
 
         Szak::create(["megnevezes"=>"Szoftver"]);
         Szak::create(["megnevezes"=>"Iru"]);
+        Szak::create(["megnevezes"=>"Grafikus"]);
     }
 
     /**

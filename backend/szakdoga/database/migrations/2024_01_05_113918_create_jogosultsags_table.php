@@ -23,6 +23,7 @@ return new class extends Migration
 
         Jogosultsag::create(["megnevezes"=>"Diák"]);
         Jogosultsag::create(["megnevezes"=>"Cég"]);
+        Jogosultsag::create(["megnevezes"=>"Admin"]);
     }
 
     /**
