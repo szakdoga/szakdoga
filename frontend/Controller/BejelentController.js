@@ -22,12 +22,13 @@ class BejelntkezesController {
     console.log("Jelszó:", adat.jelszo);
     try {
       const response = await this.dataService.bejelentkezes(adat.username,adat.jelszo);
-      console.log("Bejelentkezési válasz:");
+      console.log("Bejelentkezési válasz:",response);
       if (response.success) {
         window.location.href = "/index.html";
       }
     } catch (error) {
       console.error("Bejelentkezési hiba:", error);
+      
     }
   }
 }

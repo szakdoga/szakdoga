@@ -33,7 +33,6 @@ class DataService {
       const response = await axios.post(url, data);
       console.log("RESP", response);
       location.reload(true);
-
       if (response.data.success) {
         console.log("Adatok sikeresen elküldve a szervernek.");
       } else {
@@ -76,7 +75,7 @@ class DataService {
   async bejelentkezes(username, jelszo) {
     console.log(`Küldött adatok: felhasználónév: ${username}, jelszó: ${jelszo}`);
     try {
-      const response = await axios.post("/login", { felNev: username, jelszo });
+      const response = await axios.post("/login", { felNev: username, jelszo: jelszo });
       if (response.data && response.data.token) {
         console.log("Bejelentkezve");
         return { success: true, data: response.data };

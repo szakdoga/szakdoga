@@ -18,7 +18,7 @@ class FelhasznaloController extends Controller
     {
         $felhasznalo = new Felhasznalo();
         $felhasznalo->felNev = $request->felNev;
-        $felhasznalo->jelszo = $request->jelszo;
+        $felhasznalo->jelszo = Hash::make($request->jelszo);
         $felhasznalo->jogId = $request->jogId;
         $felhasznalo->save();
 
@@ -52,23 +52,17 @@ class FelhasznaloController extends Controller
     }
 
     public function login(Request $request)
-{
-    $request->validate([
-        'felNev' => 'required|string',
-        'jelszo' => 'required|string',
-    ]);
-    
-    $felhasznalo = Felhasznalo::where('felNev', $request->felNev)->first();
-
-    if (!$felhasznalo || !Hash::check($request->jelszo, $felhasznalo->jelszo)) {
-        return response()->json(['message' => 'Hibás felhasználónév vagy jelszó!'], 401);
+    {
+        $request->validate([
+            'felNev' => 'required|string',
+            'jelszo' => 'required|string',
+        ]);
+        $felhasznalo = Felhasznalo::where('felNev', $request->felNev)->first();
+        if (!$felhasznalo || !Hash::check($request->jelszo, $felhasznalo->jelszo)) {
+            return response()->json(['message' => 'Hibás felhasználónév vagy jelszó!'], 401);
+        }
+        Auth::loginUsingId($felhasznalo->id);
+        $token = $felhasznalo->createToken('api-token')->plainTextToken;
+        return response()->json(['message' => 'Sikeres bejelentkezés!', 'token' => $token]);
     }
-
-    Auth::loginUsingId($felhasznalo->id);
-
-    $token = $felhasznalo->createToken('api-token')->plainTextToken;
-    return response()->json(['message' => 'Sikeres bejelentkezés!', 'token' => $token]);
-}
-
-    
 }
