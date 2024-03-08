@@ -77,18 +77,26 @@ class DataService {
     console.log(`Küldött adatok: felhasználónév: ${username}, jelszó: ${jelszo}`);
     try {
       const response = await axios.post("/login", { felNev: username, jelszo });
-      if (response.data && response.data.token) {
+      console.log(response.data)
+      console.log(response)
+      if (response.data === true) {
         console.log("Bejelentkezve");
         return { success: true, data: response.data };
       } else {
         console.log("Nincs ilyen felhasználó vagy hibás jelszó.");
-        return { success: false, message: "Nincs ilyen felhasználó vagy hibás jelszó" };
+        return {
+          success: false,
+          message: "Nincs ilyen felhasználó vagy hibás jelszó",
+        };
       }
     } catch (error) {
-      console.error("Bejelentkezési hiba:", error.response ? error.response.data : error);
+      console.error(
+        "Bejelentkezési hiba:",
+        error.response ? error.response.data : error
+      );
       return { success: false, message: "Bejelentkezési hiba" };
     }
-}
+  }
 }
 
 export default DataService;

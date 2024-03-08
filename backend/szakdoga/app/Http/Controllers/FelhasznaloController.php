@@ -6,6 +6,7 @@ use App\Models\Felhasznalo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 
 class FelhasznaloController extends Controller
 {
@@ -50,25 +51,29 @@ class FelhasznaloController extends Controller
             $felhasznalo->delete();
         }
     }
-
     public function login(Request $request)
-{
-    $request->validate([
-        'felNev' => 'required|string',
-        'jelszo' => 'required|string',
-    ]);
+    {
+        $request->validate([
+            'felNev' => 'required|string',
+            'jelszo' => 'required|string',
+        ]);
     
-    $felhasznalo = Felhasznalo::where('felNev', $request->felNev)->first();
-
-    if (!$felhasznalo || !Hash::check($request->jelszo, $felhasznalo->jelszo)) {
-        return response()->json(['message' => 'Hibás felhasználónév vagy jelszó!'], 401);
+        $felhasznalo = Felhasznalo::where('felNev', $request->felNev)->first();
+        
+        if (!$felhasznalo) {
+            Log::warning('Nincs találat a felhasználóra a megadott felhasználónévvel.');
+        } else {
+            Log::info('Talált felhasználó:', ['felhasznalo' => $felhasznalo]);
+        }
+        
+        if (!$felhasznalo || !Hash::check($request->jelszo, $felhasznalo->jelszo)) {
+            return response()->json(false, 401);
+        }
+    
+        //Auth::loginUsingId($felhasznalo->id);
+    
+        //$token = $felhasznalo->createToken('api-token')->plainTextToken;
+        return response()->json(true);
     }
-
-    Auth::loginUsingId($felhasznalo->id);
-
-    $token = $felhasznalo->createToken('api-token')->plainTextToken;
-    return response()->json(['message' => 'Sikeres bejelentkezés!', 'token' => $token]);
-}
-
     
 }
