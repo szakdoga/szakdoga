@@ -16,6 +16,11 @@ class RegController{
         $(window).on("post", (event) => {
             console.log(event.detail);
             this.dataService.postData("/felhasznalok/create", event.detail);
+            /*if (event.detail.jogId === 1) {
+                window.location.href = "diak.html";
+            } else if (event.detail.jogId === 2) {
+                window.location.href = "ceg.html";
+            }*/
           });
     }
 

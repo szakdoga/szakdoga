@@ -33,7 +33,6 @@ class DataService {
       const response = await axios.post(url, data);
       console.log("RESP", response);
       location.reload(true);
-
       if (response.data.success) {
         console.log("Adatok sikeresen elküldve a szervernek.");
       } else {

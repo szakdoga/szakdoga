@@ -68,7 +68,7 @@ class RegisztracioView {
     this.#jelszoMeg = this.szuloElem.querySelector("#jelszoMeg").value;
 
     if (this.#adat.jelszo === this.#jelszoMeg) {
-      console.log("Egyezik")
+      console.log("Egyezik");
       jelszoInput.classList.remove("is-invalid");
       return true;
     } else {
@@ -93,12 +93,12 @@ class RegisztracioView {
     this.#adat.jelszo = document.getElementById("jelszo").value;
 
     const jogId = document.getElementById("jogId");
-    if(jogId.value == "diak"){
+    if (jogId.value == "diak") {
       this.#adat.jogId = 1;
-    }else{
+    } else {
       this.#adat.jogId = 2;
     }
-    console.log(this.#adat.jogId)
+    console.log(this.#adat.jogId);
   }
 
   #esemenyTrigger(esemenyNev) {

@@ -19,7 +19,7 @@ class FelhasznaloController extends Controller
     {
         $felhasznalo = new Felhasznalo();
         $felhasznalo->felNev = $request->felNev;
-        $felhasznalo->jelszo = $request->jelszo;
+        $felhasznalo->jelszo = Hash::make($request->jelszo);
         $felhasznalo->jogId = $request->jogId;
         $felhasznalo->save();
 
