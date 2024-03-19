@@ -6,6 +6,7 @@ use App\Models\Felhasznalo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Session;
 
 class FelhasznaloController extends Controller
 {
@@ -63,6 +64,12 @@ class FelhasznaloController extends Controller
         }
         Auth::loginUsingId($felhasznalo->id);
         $token = $felhasznalo->createToken('api-token')->plainTextToken;
-        return response()->json(['message' => 'Sikeres bejelentkezés!', 'token' => $token]);
+        $csrfToken = Session::token();
+
+        return response()->json([
+            'message' => 'Sikeres bejelentkezés!',
+            'token' => $token,
+            'csrfToken' => $csrfToken
+        ]);
     }
 }

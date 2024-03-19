@@ -4,7 +4,7 @@ import DataService from "../Model/DataService.js";
 
 class BejelntkezesController {
   constructor() {
-    const adat = { username: "", jelszo: "" };
+    const adat = { felNev: "", jelszo: "" };
     const model = new BejelentkezesModel(adat);
     const szuloElem = document.querySelector(".bejelentkezes");
     console.log(szuloElem);
@@ -18,13 +18,15 @@ class BejelntkezesController {
   async bejelentkezes(model, event) {
     event.preventDefault();
     const adat = model.getAdat();
-    console.log("Felhasználónév:", adat.username);
+    console.log("Felhasználónév:", adat.felNev);
     console.log("Jelszó:", adat.jelszo);
     try {
-      const response = await this.dataService.bejelentkezes(adat.username,adat.jelszo);
+      const response = await this.dataService.bejelentkezes(adat.felNev,adat.jelszo);
       console.log("Bejelentkezési válasz:",response);
       if (response.success) {
-        window.location.href = "/index.html";
+        window.location.href = "index.html";
+      }else {
+        alert(response.message || "Bejelentkezési hiba");
       }
     } catch (error) {
       console.error("Bejelentkezési hiba:", error);
