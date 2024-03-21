@@ -6,6 +6,7 @@ use App\Models\Felhasznalo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
 
 class FelhasznaloController extends Controller
@@ -51,16 +52,19 @@ class FelhasznaloController extends Controller
             $felhasznalo->delete();
         }
     }
-
     public function login(Request $request)
     {
         $request->validate([
             'felNev' => 'required|string',
             'jelszo' => 'required|string',
         ]);
+    
         $felhasznalo = Felhasznalo::where('felNev', $request->felNev)->first();
-        if (!$felhasznalo || !Hash::check($request->jelszo, $felhasznalo->jelszo)) {
-            return response()->json(['message' => 'Hibás felhasználónév vagy jelszó!'], 401);
+        
+        if (!$felhasznalo) {
+            Log::warning('Nincs találat a felhasználóra a megadott felhasználónévvel.');
+        } else {
+            Log::info('Talált felhasználó:', ['felhasznalo' => $felhasznalo]);
         }
         Auth::loginUsingId($felhasznalo->id);
         $token = $felhasznalo->createToken('api-token')->plainTextToken;
@@ -72,4 +76,5 @@ class FelhasznaloController extends Controller
             'csrfToken' => $csrfToken
         ]);
     }
+    
 }

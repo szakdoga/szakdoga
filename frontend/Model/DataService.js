@@ -26,14 +26,15 @@ class DataService {
     }
   }
 
-  async postData(url, data) {
+  async postData(url, adat) {
     try {
-      await this.getToken();
-      data._token = this.token;
-      const response = await axios.post(url, data);
-      console.log("RESP", response);
-      location.reload(true);
-      if (response.data.success) {
+      /*await this.getToken();
+      data._token = this.token;*/
+      console.log(url);
+      console.log(adat);
+      const response = await axios.post(url, adat);
+      console.log(response);
+      if (response.status === 201 && response.statusText === "Created"){
         console.log("Adatok sikeresen elküldve a szervernek.");
       } else {
         console.error("Szerver hiba:", response.data.error);
@@ -41,6 +42,8 @@ class DataService {
     } catch (error) {
       console.error("Hiba az adatok küldése közben:", error);
     }
+
+   
   }
   async postData2(url, data) {
     try {
@@ -100,13 +103,19 @@ class DataService {
         return { success: true, data: response.data };
       } else {
         console.log("Nincs ilyen felhasználó vagy hibás jelszó.");
-        return { success: false, message: "Nincs ilyen felhasználó vagy hibás jelszó" };
+        return {
+          success: false,
+          message: "Nincs ilyen felhasználó vagy hibás jelszó",
+        };
       }
     } catch (error) {
-      console.error("Bejelentkezési hiba:", error.response ? error.response.data : error);
+      console.error(
+        "Bejelentkezési hiba:",
+        error.response ? error.response.data : error
+      );
       return { success: false, message: "Bejelentkezési hiba" };
     }
-}
+  }
 }
 
 export default DataService;

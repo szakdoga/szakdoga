@@ -15,6 +15,7 @@ class BejelntkezesController {
     );
     this.dataService = new DataService();
   }
+  
   async bejelentkezes(model, event) {
     event.preventDefault();
     const adat = model.getAdat();
