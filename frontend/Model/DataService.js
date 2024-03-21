@@ -45,6 +45,25 @@ class DataService {
 
    
   }
+  async postData2(url, data) {
+    try {
+        await this.getToken();
+        data._token = this.token;
+        const response = await axios.post(url, data);
+        if (response.data.success) {
+            console.log("Adatok sikeresen elküldve a szervernek.");
+            if (data.jogId === 1) { 
+                window.location.href = "diak.html";
+            } else if (data.jogId === 2) {
+                window.location.href = "ceg.html";
+            }
+        } else {
+            console.error("Szerver hiba:", response.data.error);
+        }
+    } catch (error) {
+        console.error("Hiba az adatok küldése közben:", error);
+    }
+}
 
   async updateData(vegpont, id, obj) {
     try {
@@ -75,15 +94,11 @@ class DataService {
     }
   }
 
-  async bejelentkezes(username, jelszo) {
-    console.log(
-      `Küldött adatok: felhasználónév: ${username}, jelszó: ${jelszo}`
-    );
+  async bejelentkezes(felNev, jelszo) {
+    console.log(`Küldött adatok: felhasználónév: ${felNev}, jelszó: ${jelszo}`);
     try {
-      const response = await axios.post("/login", { felNev: username, jelszo });
-      console.log(response.data);
-      console.log(response);
-      if (response.data === true) {
+      const response = await axios.post("/login", { felNev: felNev, jelszo: jelszo });
+      if (response.data && response.data.token) {
         console.log("Bejelentkezve");
         return { success: true, data: response.data };
       } else {

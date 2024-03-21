@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Session;
 
 class FelhasznaloController extends Controller
 {
@@ -65,15 +66,15 @@ class FelhasznaloController extends Controller
         } else {
             Log::info('Talált felhasználó:', ['felhasznalo' => $felhasznalo]);
         }
-        
-        if (!$felhasznalo || !Hash::check($request->jelszo, $felhasznalo->jelszo)) {
-            return response()->json(false, 401);
-        }
-    
-        //Auth::loginUsingId($felhasznalo->id);
-    
-        //$token = $felhasznalo->createToken('api-token')->plainTextToken;
-        return response()->json(true);
+        Auth::loginUsingId($felhasznalo->id);
+        $token = $felhasznalo->createToken('api-token')->plainTextToken;
+        $csrfToken = Session::token();
+
+        return response()->json([
+            'message' => 'Sikeres bejelentkezés!',
+            'token' => $token,
+            'csrfToken' => $csrfToken
+        ]);
     }
     
 }
