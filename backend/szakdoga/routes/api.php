@@ -54,6 +54,8 @@ Route::get('/cegek', [CegController::class, 'index']);
 Route::post('/cegek/create', [CegController::class, 'store']);
 Route::get('/cegek/{id}', [CegController::class, 'show']);
 Route::put('/cegek/{id}/edit', [CegController::class, 'update']);
+Route::get('/cegek/lista', [CegController::class, 'listCegek']);
+
 //Admin
 Route::get('/admin', [AdminController::class, 'index']);
 Route::post('/admin/create', [AdminController::class, 'store']);

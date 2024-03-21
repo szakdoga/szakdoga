@@ -17,4 +17,4 @@ class TablaSorView{
     }
 
 }
-export default TablaSorView
+export default TablaSorView;
