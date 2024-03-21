@@ -26,14 +26,15 @@ class DataService {
     }
   }
 
-  async postData(url, data) {
+  async postData(url, adat) {
     try {
-      await this.getToken();
-      data._token = this.token;
-      const response = await axios.post(url, data);
-      console.log("RESP", response);
-      location.reload(true);
-      if (response.data.success) {
+      /*await this.getToken();
+      data._token = this.token;*/
+      console.log(url);
+      console.log(adat);
+      const response = await axios.post(url, adat);
+      console.log(response);
+      if (response.status === 201 && response.statusText === "Created"){
         console.log("Adatok sikeresen elküldve a szervernek.");
       } else {
         console.error("Szerver hiba:", response.data.error);
@@ -41,6 +42,8 @@ class DataService {
     } catch (error) {
       console.error("Hiba az adatok küldése közben:", error);
     }
+
+   
   }
 
   async updateData(vegpont, id, obj) {
@@ -73,11 +76,13 @@ class DataService {
   }
 
   async bejelentkezes(username, jelszo) {
-    console.log(`Küldött adatok: felhasználónév: ${username}, jelszó: ${jelszo}`);
+    console.log(
+      `Küldött adatok: felhasználónév: ${username}, jelszó: ${jelszo}`
+    );
     try {
       const response = await axios.post("/login", { felNev: username, jelszo });
-      console.log(response.data)
-      console.log(response)
+      console.log(response.data);
+      console.log(response);
       if (response.data === true) {
         console.log("Bejelentkezve");
         return { success: true, data: response.data };
