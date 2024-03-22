@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Ceg;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class CegController extends Controller
 {
@@ -43,5 +45,11 @@ class CegController extends Controller
         if ($ceg) {
             $ceg->delete();
         }
+    }
+    public function listCegek()
+    {
+        $cegek = DB::table('cegs')->select('neve', 'tel', 'kapcsNeve', 'cim', 'email')->get();
+
+        return response()->json($cegek);
     }
 }
