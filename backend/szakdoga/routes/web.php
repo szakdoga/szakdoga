@@ -47,6 +47,7 @@ Route::get('/diakok', [DiakController::class, 'index']);
 Route::post('/diakok/create', [DiakController::class, 'store']);
 Route::get('/diakok/{userId}', [DiakController::class, 'show']);
 Route::put('/diakok/{userId}/edit', [DiakController::class, 'update']);
+Route::get('/diakok/szak', [DiakController::class, 'diakokSzakjai']);
 //Ceg
 Route::get('/cegek', [CegController::class, 'index']);
 Route::post('/cegek/create', [CegController::class, 'store']);

@@ -11,7 +11,7 @@ class BejelentCegController {
   megjelenit(lista) {
     console.log(lista);
     
-    new BejelentCegView($(".tablazat"),lista)
+    new BejelentCegView($(".diakTablazat"),lista)
   }
 
 }
