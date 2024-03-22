@@ -14,25 +14,30 @@ class RegController {
 
     $(window).on("post", async (event) => {
       console.log(event.detail);
-        let jogosultsag = event.detail.jogId;
-        await this.dataService.postData("/felhasznalok/create", event.detail);
-        this.handleRegister(jogosultsag);
+      let jogosultsag = event.detail.jogId;
+      await fetch("/felhasznalok/create", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(event.detail),
+      });
+      console.log(jogosultsag);
+      this.handleRegister(jogosultsag);
     });
   }
 
-  
   handleRegister(jogosultsag) {
     console.log(jogosultsag);
     try {
-        if (jogosultsag === 1) {
-          window.location.href = "diak.html";
-        } else if (jogosultsag === 2) {
-          window.location.href = "ceg.html";
-        }
-      } catch (error) {
-        console.error("Hiba történt az oldalirányítás közben:", error);
+      if (jogosultsag === 1) {
+        window.location.href = "diak.html";
+      } else if (jogosultsag === 2) {
+        window.location.href = "ceg.html";
       }
+    } catch (error) {
+      console.error("Hiba történt az oldalirányítás közben:", error);
+    }
   }
-
 }
 export default RegController;

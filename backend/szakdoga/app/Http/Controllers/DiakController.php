@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Diak;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+
 
 class DiakController extends Controller
 {
@@ -28,13 +30,13 @@ class DiakController extends Controller
 
     public function update(Request $request, $userId)
     {
-        
+
         $diak = Diak::find($userId);
         if ($diak) {
             $diak->fill($request->all());
             $diak->save();
-        } 
-    
+        }
+
         return $diak;
     }
 
@@ -45,4 +47,17 @@ class DiakController extends Controller
             $diak->delete();
         }
     }
+
+public function diakokSzakjai()
+{
+    DB::enableQueryLog();
+
+    $diakokSzakjai = DB::select("
+        SELECT diaks.nev, szaks.megnevezes
+        FROM diaks
+        INNER JOIN szaks ON diaks.szakId = szaks.szakId
+    ");
+
+    return DB::getQueryLog();
+}
 }
