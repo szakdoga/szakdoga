@@ -51,10 +51,10 @@ Route::get('/diakok/{id}', [DiakController::class, 'show']);
 Route::put('/diakok/{userId}/edit', [DiakController::class, 'update']);
 //Ceg
 Route::get('/cegek', [CegController::class, 'index']);
+Route::get('/cegek/lista', [CegController::class, 'listCegek']);
 Route::post('/cegek/create', [CegController::class, 'store']);
 Route::get('/cegek/{id}', [CegController::class, 'show']);
 Route::put('/cegek/{id}/edit', [CegController::class, 'update']);
-Route::get('/cegek/lista', [CegController::class, 'listCegek']);
 
 //Admin
 Route::get('/admin', [AdminController::class, 'index']);

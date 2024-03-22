@@ -1,6 +1,6 @@
 class DataService {
   constructor() {
-    axios.defaults.baseURL = "http://127.0.0.1:8000/";
+    axios.defaults.baseURL = "http://127.0.0.1:8000";
     axios.defaults.withCredentials = true;
     this.token = "";
   }
@@ -94,20 +94,12 @@ class DataService {
     }
   }
 
-  async bejelentkezes(felNev, jelszo) {
+   async bejelentkezes(felNev, jelszo) {
+    this.getToken()
     console.log(`Küldött adatok: felhasználónév: ${felNev}, jelszó: ${jelszo}`);
     try {
-      const response = await axios.post("/login", { felNev: felNev, jelszo: jelszo });
-      if (response.data && response.data.token) {
-        console.log("Bejelentkezve");
-        return { success: true, data: response.data };
-      } else {
-        console.log("Nincs ilyen felhasználó vagy hibás jelszó.");
-        return {
-          success: false,
-          message: "Nincs ilyen felhasználó vagy hibás jelszó",
-        };
-      }
+      const response = await axios.post("/login", { felNev: felNev, jelszo: jelszo, _token: this.token });
+        window.location.href = "index.html";
     } catch (error) {
       console.error(
         "Bejelentkezési hiba:",
