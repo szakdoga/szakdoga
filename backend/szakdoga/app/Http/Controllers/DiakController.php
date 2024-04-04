@@ -48,16 +48,30 @@ class DiakController extends Controller
         }
     }
 
-public function diakokSzakjai()
-{
-    DB::enableQueryLog();
+    public function diakokSzakjai()
+    {
+        DB::enableQueryLog();
 
-    $diakokSzakjai = DB::select("
+        $diakokSzakjai = DB::select("
         SELECT diaks.nev, szaks.megnevezes
         FROM diaks
         INNER JOIN szaks ON diaks.szakId = szaks.szakId
     ");
 
-    return DB::getQueryLog();
-}
+        return DB::getQueryLog();
+    }
+
+    public function listDiakok()
+    {
+        $diakok = DB::table('diaks')->select('nev', 'szulDatum', 'email', 'tel', 'fax', 'lakcim', 'neme', 'allampolg')->get();
+
+        return response()->json($diakok);
+    }
+
+    public function diakKapcsolat()
+    {
+        $diakok = DB::table('diaks')->select('nev', 'userId')->get();
+
+        return response()->json($diakok);
+    }
 }

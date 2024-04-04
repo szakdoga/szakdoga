@@ -34,7 +34,7 @@ class DataService {
       console.log(adat);
       const response = await axios.post(url, adat);
       console.log(response);
-      if (response.status === 201 && response.statusText === "Created"){
+      if (response.status === 201 && response.statusText === "Created") {
         console.log("Adatok sikeresen elküldve a szervernek.");
       } else {
         console.error("Szerver hiba:", response.data.error);
@@ -42,28 +42,26 @@ class DataService {
     } catch (error) {
       console.error("Hiba az adatok küldése közben:", error);
     }
-
-   
   }
   async postData2(url, data) {
     try {
-        await this.getToken();
-        data._token = this.token;
-        const response = await axios.post(url, data);
-        if (response.data.success) {
-            console.log("Adatok sikeresen elküldve a szervernek.");
-            if (data.jogId === 1) { 
-                window.location.href = "diak.html";
-            } else if (data.jogId === 2) {
-                window.location.href = "ceg.html";
-            }
-        } else {
-            console.error("Szerver hiba:", response.data.error);
+      await this.getToken();
+      data._token = this.token;
+      const response = await axios.post(url, data);
+      if (response.data.success) {
+        console.log("Adatok sikeresen elküldve a szervernek.");
+        if (data.jogId === 1) {
+          window.location.href = "diak.html";
+        } else if (data.jogId === 2) {
+          window.location.href = "ceg.html";
         }
+      } else {
+        console.error("Szerver hiba:", response.data.error);
+      }
     } catch (error) {
-        console.error("Hiba az adatok küldése közben:", error);
+      console.error("Hiba az adatok küldése közben:", error);
     }
-}
+  }
 
   async updateData(vegpont, id, obj) {
     try {
@@ -94,12 +92,16 @@ class DataService {
     }
   }
 
-   async bejelentkezes(felNev, jelszo) {
-    this.getToken()
+  async bejelentkezes(felNev, jelszo) {
+    this.getToken();
     console.log(`Küldött adatok: felhasználónév: ${felNev}, jelszó: ${jelszo}`);
     try {
-      const response = await axios.post("/login", { felNev: felNev, jelszo: jelszo, _token: this.token });
-        window.location.href = "index.html";
+      const response = await axios.post("/login", {
+        felNev: felNev,
+        jelszo: jelszo,
+        _token: this.token,
+      });
+      window.location.href = "index.html";
     } catch (error) {
       console.error(
         "Bejelentkezési hiba:",
@@ -108,6 +110,37 @@ class DataService {
       return { success: false, message: "Bejelentkezési hiba" };
     }
   }
+
+  async getCegek() {
+    try {
+      const response = await axios.get("/api/cegek/nevid");
+      return response.data;
+    } catch (error) {
+      console.error("Hiba történt a cégek lekérdezése közben:", error);
+      return [];
+    }
+  }
+
+  async getDiakok() {
+    try {
+      const response = await axios.get("/api/diakok/nevid");
+      return response.data;
+    } catch (error) {
+      console.error("Hiba történt a diákok lekérdezése közben:", error);
+      return [];
+    }
+  }
+  async postCegDiakKapcsolat(adat) {
+    try {
+      const response = await axios.post('/api/kapcsolatok/create', adat);
+      console.log("Kapcsolat sikeresen létrehozva:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Hiba történt a kapcsolat létrehozása közben:", error);
+      throw error;
+    }
+  }
+  
 }
 
 export default DataService;

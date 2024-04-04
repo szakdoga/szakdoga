@@ -9,7 +9,7 @@ $(function () {
   } else if (currentUrl.includes("regisztracio.html")) {
     new RegController();
   } else if (currentUrl.includes("index.html")) {
-    //new AdminController();
+    new AdminController();
   } else {
     console.log("Nem azonosítható oldal.");
   }
