@@ -35,7 +35,7 @@ class AdminController {
 
   async createCegDiakKapcsolat(adat) {
     try {
-      await this.dataService.postCegDiakKapcsolat(adat);
+      await this.dataService.postData('api/kapcsolatok/create',adat);
       alert("Kapcsolat sikeresen létrehozva");
     } catch (error) {
       alert("Hiba történt a kapcsolat létrehozása során");

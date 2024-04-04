@@ -27,16 +27,17 @@ class CegDiakKapcsolat {
     `;
     this.szuloElem.append(txt);
     this.#adat.cegek.forEach((ceg) => {
-      $("#cegSelect").append(`<option value="${ceg.id}">${ceg.neve}</option>`);
+      $("#cegSelect").append(`<option value="${ceg.userId}">${ceg.neve}</option>`);
     });
     this.#adat.diakok.forEach((diak) => {
       $("#diakSelect").append(
-        `<option value="${diak.id}">${diak.nev}</option>`
+        `<option value="${diak.userId}">${diak.nev}</option>`
       );
     });
     $("#kuldesGomb").click(() => {
       const cegId = $("#cegSelect").val();
       const diakId = $("#diakSelect").val();
+      console.log(cegId,diakId);
       this.adminController.createCegDiakKapcsolat({ cegId, diakId });
     });
   }
