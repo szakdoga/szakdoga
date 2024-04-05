@@ -25,6 +25,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return ['Laravel' => app()->version()];
 });
+/*
 //Szak
 Route::get('/szakok', [SzakController::class, 'index']);
 Route::post('/szakok/create', [SzakController::class, 'store']);
@@ -73,7 +74,7 @@ Route::get('/kapcsolatok', [CDKapcsolatController::class, 'index']);
 Route::post('/kapcsolatok/create', [CDKapcsolatController::class, 'store']);
 Route::get('/kapcsolatok/{diakId}/{cegId}', [CDKapcsolatController::class, 'show']);
 Route::put('/kapcsolatok/{diakId}/{cegId}/edit', [CDKapcsolatController::class, 'update']);
-
+*/
 Route::get('/token', function () {
     return request()->session()->token();
 });

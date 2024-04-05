@@ -24,7 +24,10 @@ class FelhasznaloController extends Controller
         $felhasznalo->jogId = $request->jogId;
         $felhasznalo->save();
 
-        return $felhasznalo;
+        return response()->json([
+            'felhasznalo' => $felhasznalo,
+            'userId' => $felhasznalo->userId
+        ], 201);
     }
 
     public function show($id)

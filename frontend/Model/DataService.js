@@ -1,6 +1,6 @@
 class DataService {
   constructor() {
-    axios.defaults.baseURL = "http://127.0.0.1:8000/";
+    axios.defaults.baseURL = "http://127.0.0.1:8000";
     axios.defaults.withCredentials = true;
     this.token = "";
   }
@@ -33,37 +33,30 @@ class DataService {
       console.log(url);
       console.log(adat);
       const response = await axios.post(url, adat);
-      console.log(response);
-      if (response.status === 201 && response.statusText === "Created"){
+      return response.data;
+    } catch (error) {
+      console.error("Hiba az adatok küldése közben:", error);
+    }
+  }
+  async postData2(url, data) {
+    try {
+      await this.getToken();
+      data._token = this.token;
+      const response = await axios.post(url, data);
+      if (response.data.success) {
         console.log("Adatok sikeresen elküldve a szervernek.");
+        if (data.jogId === 1) {
+          window.location.href = "diak.html";
+        } else if (data.jogId === 2) {
+          window.location.href = "ceg.html";
+        }
       } else {
         console.error("Szerver hiba:", response.data.error);
       }
     } catch (error) {
       console.error("Hiba az adatok küldése közben:", error);
     }
-
-   
   }
-  async postData2(url, data) {
-    try {
-        await this.getToken();
-        data._token = this.token;
-        const response = await axios.post(url, data);
-        if (response.data.success) {
-            console.log("Adatok sikeresen elküldve a szervernek.");
-            if (data.jogId === 1) { 
-                window.location.href = "diak.html";
-            } else if (data.jogId === 2) {
-                window.location.href = "ceg.html";
-            }
-        } else {
-            console.error("Szerver hiba:", response.data.error);
-        }
-    } catch (error) {
-        console.error("Hiba az adatok küldése közben:", error);
-    }
-}
 
   async updateData(vegpont, id, obj) {
     try {
@@ -97,7 +90,10 @@ class DataService {
   async bejelentkezes(felNev, jelszo) {
     console.log(`Küldött adatok: felhasználónév: ${felNev}, jelszó: ${jelszo}`);
     try {
-      const response = await axios.post("/login", { felNev: felNev, jelszo: jelszo });
+      const response = await axios.post("/login", {
+        felNev: felNev,
+        jelszo: jelszo,
+      });
       if (response.data && response.data.token) {
         console.log("Bejelentkezve");
         return { success: true, data: response.data };

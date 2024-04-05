@@ -46,15 +46,18 @@ Route::delete('/felhasznalok/{id}/delete', [FelhasznaloController::class, 'destr
 Route::post('/login', [FelhasznaloController::class, 'login']);
 // Diak
 Route::get('/diakok', [DiakController::class, 'index']);
+Route::get('/diakok/szak', [DiakController::class, 'diakokSzakjai']);
 Route::post('/diakok/create', [DiakController::class, 'store']);
 Route::get('/diakok/{id}', [DiakController::class, 'show']);
 Route::put('/diakok/{userId}/edit', [DiakController::class, 'update']);
+
 //Ceg
 Route::get('/cegek', [CegController::class, 'index']);
+Route::get('/cegek/lista', [CegController::class, 'listCegek']);
 Route::post('/cegek/create', [CegController::class, 'store']);
 Route::get('/cegek/{id}', [CegController::class, 'show']);
 Route::put('/cegek/{id}/edit', [CegController::class, 'update']);
-Route::get('/cegek/lista', [CegController::class, 'listCegek']);
+
 
 //Admin
 Route::get('/admin', [AdminController::class, 'index']);

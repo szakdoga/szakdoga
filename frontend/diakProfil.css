@@ -1,0 +1,53 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f4f4f4;
+}
+.bord {
+  width: 80%;
+  border-bottom: 1px solid black;
+}
+main {
+  padding: 15px;
+  margin: auto;
+  width: 80%;
+  background-color: white;
+}
+#profilKep{
+  padding-top: 10px;
+}
+
+h1 {
+  font-size: 2.5em;
+  color: #333;
+  text-align: center;
+  margin-top: 10px;
+  border-bottom: 3px solid rgb(13, 110, 253);
+}
+
+h2 {
+  font-size: 1.5em;
+  color: #666;
+  margin-top: 1em;
+}
+
+p {
+  font-size: 1em;
+  color: #333;
+  line-height: 1.5;
+}
+
+p:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+.navbar {
+  background-color: #007bff;
+}
+
+.nav-link {
+  color: #fff;
+}
+
+.nav-link:hover {
+  color: #ddd;
+}

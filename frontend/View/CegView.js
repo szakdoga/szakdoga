@@ -78,6 +78,7 @@ class CegView {
       this.#adat.kapcsNeve = document.getElementById("kapcsNeve").value;
       this.#adat.cim = document.getElementById("cim").value;
       this.#adat.email = document.getElementById("email").value;
+      this.#adat.userId = JSON.parse(localStorage.getItem("userId"));
     }
   
     #esemenyTrigger(esemenyNev) {

@@ -48,16 +48,11 @@ class DiakController extends Controller
         }
     }
 
-public function diakokSzakjai()
-{
-    DB::enableQueryLog();
-
-    $diakokSzakjai = DB::select("
-        SELECT diaks.nev, szaks.megnevezes
-        FROM diaks
-        INNER JOIN szaks ON diaks.szakId = szaks.szakId
-    ");
-
-    return DB::getQueryLog();
-}
+    public function diakokSzakjai()
+    {
+        return DB::table('diaks')
+            ->join('szaks', 'diaks.szakId', '=', 'szaks.szakId')
+            ->select('diaks.userId','diaks.nev', 'szaks.megnevezes')
+            ->get();
+    }
 }

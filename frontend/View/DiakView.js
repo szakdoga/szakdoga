@@ -69,11 +69,11 @@ class DiakView {
             <div class="mb-3">
               <label for="neme" class="form-label">Nem:</label>
               <select class="form-select" id="neme" name="neme">
-                <option value="férfi" ${
-                  this.#adat.neme === "férfi" ? "selected" : ""
+                <option value="Férfi" ${
+                  this.#adat.neme === "Férfi" ? "selected" : ""
                 }>Férfi</option>
-                <option value="nő" ${
-                  this.#adat.neme === "nő" ? "selected" : ""
+                <option value="Nő" ${
+                  this.#adat.neme === "Nő" ? "selected" : ""
                 }>Nő</option>
               </select>
             </div>
@@ -87,29 +87,18 @@ class DiakView {
                 value="${this.#adat.allampolg}"
               />
             </div>
+        
             <div class="mb-3">
-              <label for="atlag" class="form-label">Átlag:</label>
-              <input
-                type="number"
-                class="form-control"
-                id="atlag"
-                name="atlag"
-                min="1"
-                max="5"
-                value="${this.#adat.atlag}"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="szakId" class="form-label">Szak:</label>
-              <select class="form-select" id="szakId" name="szakId">
-              <option value="Szoftver" ${
-                this.#adat.szakId === "Szoftver" ? "selected" : ""
+            <label for="szakId" class="form-label">Szak:</label>
+            <select class="form-select" id="szakId" name="szakId">
+              <option value="1" ${
+                this.#adat.szakId === "1" ? "selected" : ""
               }>Szoftver</option>
-              <option value="Irü" ${
-                this.#adat.szakId === "Irü" ? "selected" : ""
+              <option value="2" ${
+                this.#adat.szakId === "2" ? "selected" : ""
               }>Irü</option>
-              </select>
-            </div>
+            </select>
+          </div>
             <div class="text-center">
               <button type="submit" class="btn btn-primary w-100" id="submit">Feltöltés</button>
             </div>
@@ -135,8 +124,9 @@ class DiakView {
     this.#adat.lakcim = document.getElementById("lakcim").value;
     this.#adat.neme = document.getElementById("neme").value;
     this.#adat.allampolg = document.getElementById("allampolg").value;
-    this.#adat.atlag = document.getElementById("atlag").value;
+    //this.#adat.atlag = document.getElementById("atlag").value;
     this.#adat.szakId = document.getElementById("szakId").value;
+    this.#adat.userId = JSON.parse(localStorage.getItem("userId"));
   }
 
   #esemenyTrigger(esemenyNev) {

@@ -6,29 +6,26 @@ class RegController {
     const adat = { felNev: "", jelszo: "", jogId: "" };
     const model = new RegisztracioModel(adat);
     const szuloElem = document.querySelector(".regisztracio");
-    console.log(szuloElem);
+
     const view = new RegisztracioView(model.getAdat(), szuloElem);
-    //view.submitElem.addEventListener("click", this.handleRegister.bind(this, model));
 
     this.dataService = new DataService();
 
     $(window).on("post", async (event) => {
       console.log(event.detail);
-      let jogosultsag = event.detail.jogId;
-      await fetch("/felhasznalok/create", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(event.detail),
-      });
-      console.log(jogosultsag);
-      this.handleRegister(jogosultsag);
+
+      localStorage.setItem("jogId", JSON.stringify(event.detail.jogId));
+
+      const response = await this.dataService.postData("/api/felhasznalok/create", event.detail);
+
+      localStorage.setItem("userId", JSON.stringify(response.userId));
+
+      this.handleRegister();
     });
   }
 
-  handleRegister(jogosultsag) {
-    console.log(jogosultsag);
+  handleRegister() {
+    const jogosultsag = JSON.parse(localStorage.getItem("jogId"));
     try {
       if (jogosultsag === 1) {
         window.location.href = "diak.html";
