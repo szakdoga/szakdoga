@@ -52,4 +52,10 @@ class CegController extends Controller
 
         return response()->json($cegek);
     }
+
+    public function cegKapcsolat(){
+        $cegek = DB::table('cegs')->select('neve', 'userId')->get();
+
+        return response()->json($cegek);
+    }
 }

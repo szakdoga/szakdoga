@@ -88,22 +88,15 @@ class DataService {
   }
 
   async bejelentkezes(felNev, jelszo) {
+    this.getToken();
     console.log(`Küldött adatok: felhasználónév: ${felNev}, jelszó: ${jelszo}`);
     try {
       const response = await axios.post("/login", {
         felNev: felNev,
         jelszo: jelszo,
+        _token: this.token,
       });
-      if (response.data && response.data.token) {
-        console.log("Bejelentkezve");
-        return { success: true, data: response.data };
-      } else {
-        console.log("Nincs ilyen felhasználó vagy hibás jelszó.");
-        return {
-          success: false,
-          message: "Nincs ilyen felhasználó vagy hibás jelszó",
-        };
-      }
+      window.location.href = "index.html";
     } catch (error) {
       console.error(
         "Bejelentkezési hiba:",
@@ -112,6 +105,37 @@ class DataService {
       return { success: false, message: "Bejelentkezési hiba" };
     }
   }
+
+  async getCegek() {
+    try {
+      const response = await axios.get("/api/cegek/nevid");
+      return response.data;
+    } catch (error) {
+      console.error("Hiba történt a cégek lekérdezése közben:", error);
+      return [];
+    }
+  }
+
+  async getDiakok() {
+    try {
+      const response = await axios.get("/api/diakok/nevid");
+      return response.data;
+    } catch (error) {
+      console.error("Hiba történt a diákok lekérdezése közben:", error);
+      return [];
+    }
+  }
+  async postCegDiakKapcsolat(adat) {
+    try {
+      const response = await axios.post('/api/kapcsolatok/create', adat);
+      console.log("Kapcsolat sikeresen létrehozva:", response.data);
+      return response.data;
+    } catch (error) {
+      console.error("Hiba történt a kapcsolat létrehozása közben:", error);
+      throw error;
+    }
+  }
+  
 }
 
 export default DataService;

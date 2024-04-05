@@ -50,9 +50,27 @@ class DiakController extends Controller
 
     public function diakokSzakjai()
     {
-        return DB::table('diaks')
-            ->join('szaks', 'diaks.szakId', '=', 'szaks.szakId')
-            ->select('diaks.userId','diaks.nev', 'szaks.megnevezes')
-            ->get();
+
+        $diakokSzakjai = DB::select("
+        SELECT diaks.nev, szaks.megnevezes
+        FROM diaks
+        INNER JOIN szaks ON diaks.szakId = szaks.szakId
+    ");
+
+        return $diakokSzakjai;
+    }
+
+    public function listDiakok()
+    {
+        $diakok = DB::table('diaks')->select('nev', 'szulDatum', 'email', 'tel', 'fax', 'lakcim', 'neme', 'allampolg')->get();
+
+        return response()->json($diakok);
+    }
+
+    public function diakKapcsolat()
+    {
+        $diakok = DB::table('diaks')->select('nev', 'userId')->get();
+
+        return response()->json($diakok);
     }
 }
