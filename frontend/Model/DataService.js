@@ -96,7 +96,12 @@ class DataService {
         jelszo: jelszo,
         _token: this.token,
       });
+
+      localStorage.setItem("bejelentkezett", "true");
       window.location.href = "index.html";
+
+
+
     } catch (error) {
       console.error(
         "Bejelentkezési hiba:",
@@ -127,7 +132,7 @@ class DataService {
   }
   async postCegDiakKapcsolat(adat) {
     try {
-      const response = await axios.post('/api/kapcsolatok/create', adat);
+      const response = await axios.post("/api/kapcsolatok/create", adat);
       console.log("Kapcsolat sikeresen létrehozva:", response.data);
       return response.data;
     } catch (error) {
@@ -135,7 +140,15 @@ class DataService {
       throw error;
     }
   }
-  
+
+  async getJogId(felNev){
+    try {
+      const response = await axios.post(`/api/getJogId/${felNev}`);
+      return response.data;
+    } catch (error) {
+      console.error("Hiba történt a jogosultság lekérdezése közben:", error);
+    }
+  }
 }
 
 export default DataService;

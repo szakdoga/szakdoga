@@ -44,6 +44,7 @@ Route::get('/felhasznalok/{id}', [FelhasznaloController::class, 'show']);
 Route::put('/felhasznalok/{id}/edit', [FelhasznaloController::class, 'update']);
 Route::delete('/felhasznalok/{id}/delete', [FelhasznaloController::class, 'destroy']);
 Route::post('/login', [FelhasznaloController::class, 'login']);
+Route::get('/getJogId/{felNev}', [FelhasznaloController::class, 'getJogId']);
 // Diak
 Route::get('/diakok', [DiakController::class, 'index']);
 Route::get('/diakok/szak', [DiakController::class, 'diakokSzakjai']);

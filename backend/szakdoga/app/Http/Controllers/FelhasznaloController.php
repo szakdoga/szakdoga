@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Felhasznalo;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Session;
@@ -78,6 +79,14 @@ class FelhasznaloController extends Controller
             'token' => $token,
             'csrfToken' => $csrfToken
         ]);
+    }
+
+    public function getJogId($felNev) {
+        $jogId = DB::table('felhasznalos')
+                    ->where('felNev', $felNev)
+                    ->value('jogId');
+    
+        return $jogId;
     }
     
 }

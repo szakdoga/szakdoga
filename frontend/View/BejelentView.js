@@ -6,7 +6,7 @@ class BejelentkezesView {
         this.szuloElem.innerHTML = `
             <form>
                 <div class="mb-3">
-                    <label for="felNev" class="form-label">FelhasználóNév:</label>
+                    <label for="felNev" class="form-label">Felhasználónév:</label>
                     <input type="text" class="form-control" id="felNev" name="felNev" value="${this.#adat.felNev}">
                 </div>
                 <div class="mb-3">
