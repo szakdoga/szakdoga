@@ -79,6 +79,7 @@ Route::get('/preferalt/{id}', [PreferaltCegController::class, 'show']);
 Route::put('/preferalt/{id}/edit', [PreferaltCegController::class, 'update']);
 //C_D_Kapcsolat
 Route::get('/kapcsolatok', [CDKapcsolatController::class, 'index']);
+Route::get('/kapcsolatokNeve', [CDKapcsolatController::class, 'cdNevek']);
 Route::post('/kapcsolatok/create', [CDKapcsolatController::class, 'store']);
 Route::get('/kapcsolatok/{id}', [CDKapcsolatController::class, 'show']);
 Route::put('/kapcsolatok/{id}/edit', [CDKapcsolatController::class, 'update']);

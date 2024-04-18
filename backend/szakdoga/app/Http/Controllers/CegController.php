@@ -58,4 +58,5 @@ class CegController extends Controller
 
         return response()->json($cegek);
     }
+
 }
