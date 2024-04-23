@@ -21,6 +21,7 @@ class AdminController {
 
   async megjelenitDiakok() {
     await this.dataService.getData("/api/diakok/lista", (adatok) => {
+      console.log(adatok);
       const model = new AdminModel(adatok);
       new AdminView2(model.getAdat(), ".diakok");
     });

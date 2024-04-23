@@ -4,9 +4,11 @@ class CegView {
       this.#adat = adat;
       this.szuloElem = szuloElem;
       this.szuloElem.innerHTML = `
-            <form>
+      <div class="container p-5">
+        <h2 class="cegH2">Adatok</h2>
+            <form class="adatokForm">
             <div class="mb-3 mt-3">
-              <label for="neve" class="form-label">Neve:</label>
+              <label for="neve" class="form-label">Cég neve:</label>
               <input
                 type="text"
                 class="form-control"
@@ -16,8 +18,8 @@ class CegView {
                 value="${this.#adat.neve}"
               />
             </div>
-            <div class="mb-3">
-              <label for="tel" class="form-label">Telefon:</label>
+            <div class="form-group mb-3">
+              <label for="tel" class="form-label">Telefonszám:</label>
               <input
                 type="tel"
                 class="form-control"
@@ -26,8 +28,8 @@ class CegView {
                 value="${this.#adat.tel}"
               />
             </div>
-            <div class="mb-3">
-              <label for="kapcsNeve" class="form-label">Kapcsolat Tartó Neve:</label>
+            <div class="form-group mb-3">
+              <label for="kapcsNeve" class="form-label">Kapcsolattartó neve:</label>
               <input
                 type="text"
                 class="form-control"
@@ -36,7 +38,7 @@ class CegView {
                 value="${this.#adat.kapcsNeve}"
               />
             </div>
-            <div class="mb-3">
+            <div class="form-group mb-3">
               <label for="cim" class="form-label">Cím:</label>
               <input
                 type="text"
@@ -46,7 +48,7 @@ class CegView {
                 value="${this.#adat.cim}"
               />
             </div>
-            <div class="mb-3">
+            <div class="form-group mb-3">
               <label for="email" class="form-label">Email:</label>
               <input
                 type="email"
@@ -60,6 +62,7 @@ class CegView {
               <button type="submit" class="btn btn-primary w-100" id="submit">Feltöltés</button>
             </div>
           </form>
+          </div>
             `;
       this.formElem = this.szuloElem.querySelector("form");
       this.submitElem = this.formElem.querySelector("#submit");

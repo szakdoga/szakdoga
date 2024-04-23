@@ -13,13 +13,13 @@ class PreferaltCegController extends Controller
         return PreferaltCeg::all();
     }
 
-    public function store(Request $request)
+    public function store($diakId, $cegId)
     {
         $preferalt = new PreferaltCeg();
-        $preferalt->diakId = $request->diakId;
-        $preferalt->cegId = $request->cegId;
+        $preferalt->diakId = $diakId;
+        $preferalt->cegId = $cegId;
         $preferalt->save();
-
+    
         return $preferalt;
     }
 

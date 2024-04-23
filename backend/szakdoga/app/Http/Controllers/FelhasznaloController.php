@@ -81,12 +81,13 @@ class FelhasznaloController extends Controller
         ]);
     }
 
-    public function getJogId($felNev) {
-        $jogId = DB::table('felhasznalos')
-                    ->where('felNev', $felNev)
-                    ->value('jogId');
-    
-        return $jogId;
+    public function getUserData($felNev) {
+        $userData = DB::table('felhasznalos')
+                        ->where('felNev', $felNev)
+                        ->select('jogId', 'userId')
+                        ->first();
+        
+        return $userData;
     }
     
 }

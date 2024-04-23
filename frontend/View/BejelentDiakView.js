@@ -1,5 +1,5 @@
-import TablaSorViewOverRide from "./TablaSorViewOverRide.js";
-class BejelentCegView {
+import TablaSorViewWithButtonCeg from "./TablaSorViewOverRideCeg.js";
+class BejelentDiakView {
   #adat;
   constructor(szuloElem, adat) {
     this.szuloElem = szuloElem;
@@ -14,11 +14,11 @@ class BejelentCegView {
     this.szuloElem.append(txt);
     this.tableElem = this.szuloElem.find("table");   
     this.tableElem.find("thead").append(
-        "<tr class='table-dark'><th>Név</th><th>Szak</th><th> </th></tr>"
+        "<tr class='table-dark'><th>Cég</th><th>Kapcsolattartó</th><th> </th><th> </th></tr>"
       );
 
     for (const key in this.#adat) {
-      new TablaSorViewOverRide(this.#adat[key], this.tableElem);
+      new TablaSorViewWithButtonCeg(this.#adat[key], this.tableElem);
     }
   }
 
@@ -37,4 +37,4 @@ class BejelentCegView {
   }
 }
 
-export default BejelentCegView;
+export default BejelentDiakView;

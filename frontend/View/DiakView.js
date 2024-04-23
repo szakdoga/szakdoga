@@ -4,9 +4,11 @@ class DiakView {
     this.#adat = adat;
     this.szuloElem = szuloElem;
     this.szuloElem.innerHTML = `
-            <form>
-            <div class="mb-3 mt-3">
-              <label for="nev" class="form-label">Neve:</label>
+    <div class="container p-5">
+      <h2 class="diakH2">Adatok</h2>
+            <form class="adatokForm">
+            <div class="form-group mb-3">
+              <label for="nev" class="form-label">Név:</label>
               <input
                 type="text"
                 class="form-control"
@@ -16,37 +18,39 @@ class DiakView {
                 value="${this.#adat.nev}"
               />
             </div>
-            <div class="mb-3">
-              <label for="szulDatum" class="form-label">Születési Dátum:</label>
-              <input
-                type="date"
-                class="form-control"
-                id="szulDatum"
-                name="szulDatum"
-                value="${this.#adat.szulDatum}"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="email" class="form-label">Email:</label>
-              <input
-                type="email"
-                class="form-control"
-                id="email"
-                name="email"
-                value="${this.#adat.email}"
-              />
-            </div>
-            <div class="mb-3">
-              <label for="tel" class="form-label">Telefon:</label>
-              <input
-                type="tel"
-                class="form-control"
-                id="tel"
-                name="tel"
-                value="${this.#adat.tel}"
-              />
-            </div>
-            <div class="mb-3">
+            <div class="form-group mb-3">
+            <label for="szulDatum" class="form-label">Születési dátum:</label>
+            <input
+              type="date"
+              class="form-control"
+              id="szulDatum"
+              name="szulDatum"
+              value="${this.#adat.szulDatum}"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="email" class="form-label">Email:</label>
+            <input
+              type="email"
+              class="form-control"
+              id="email"
+              name="email"
+              placeholder="gibszjakab@gmail.com"
+              value="${this.#adat.email}"
+            />
+          </div>
+          <div class="form-group mb-3">
+            <label for="tel" class="form-label">Telefon:</label>
+            <input
+              type="tel"
+              class="form-control"
+              id="tel"
+              name="tel"
+              placeholder="123-456-7890"
+              value="${this.#adat.tel}"
+            />
+          </div>
+          <div class="form-group mb-3">
               <label for="fax" class="form-label">Fax:</label>
               <input
                 type="text"
@@ -56,8 +60,8 @@ class DiakView {
                 value="${this.#adat.fax}"
               />
             </div>
-            <div class="mb-3">
-              <label for="lakcim" class="form-label">Lakcíme:</label>
+            <div class="form-group mb-3">
+              <label for="lakcim" class="form-label">Lakcím:</label>
               <input
                 type="text"
                 class="form-control"
@@ -66,7 +70,7 @@ class DiakView {
                 value="${this.#adat.lakcim}"
               />
             </div>
-            <div class="mb-3">
+            <div class="form-group mb-3">
               <label for="neme" class="form-label">Nem:</label>
               <select class="form-select" id="neme" name="neme">
                 <option value="Férfi" ${
@@ -77,7 +81,7 @@ class DiakView {
                 }>Nő</option>
               </select>
             </div>
-            <div class="mb-3">
+            <div class="form-group mb-3">
               <label for="allampolg" class="form-label">Állampolgárság:</label>
               <input
                 type="text"
@@ -88,7 +92,7 @@ class DiakView {
               />
             </div>
         
-            <div class="mb-3">
+            <div class="form-group mb-3">
             <label for="szakId" class="form-label">Szak:</label>
             <select class="form-select" id="szakId" name="szakId">
               <option value="1" ${
@@ -103,6 +107,7 @@ class DiakView {
               <button type="submit" class="btn btn-primary w-100" id="submit">Feltöltés</button>
             </div>
           </form>
+          </div>
             `;
     this.formElem = this.szuloElem.querySelector("form");
     this.submitElem = this.formElem.querySelector("#submit");

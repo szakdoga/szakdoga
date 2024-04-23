@@ -44,7 +44,7 @@ Route::get('/felhasznalok/{id}', [FelhasznaloController::class, 'show']);
 Route::put('/felhasznalok/{id}/edit', [FelhasznaloController::class, 'update']);
 Route::delete('/felhasznalok/{id}/delete', [FelhasznaloController::class, 'destroy']);
 Route::post('/login', [FelhasznaloController::class, 'login']);
-Route::get('/getJogId/{felNev}', [FelhasznaloController::class, 'getJogId']);
+Route::get('/get_user_adat/{felNev}', [FelhasznaloController::class, 'getUserData']);
 // Diak
 Route::get('/diakok', [DiakController::class, 'index']);
 Route::get('/diakok/szak', [DiakController::class, 'diakokSzakjai']);
@@ -56,6 +56,7 @@ Route::put('/diakok/{userId}/edit', [DiakController::class, 'update']);
 
 //Ceg
 Route::get('/cegek', [CegController::class, 'index']);
+Route::get('/cegek/Adat', [CegController::class, 'cegekProfil']);
 Route::get('/cegek/lista', [CegController::class, 'listCegek']);
 Route::get('/cegek/nevid', [CegController::class, 'cegKapcsolat']);
 Route::post('/cegek/create', [CegController::class, 'store']);
@@ -74,11 +75,12 @@ Route::get('/kovetelmenyek/{id}', [KovetelmenyController::class, 'show']);
 Route::put('/kovetelmenyek/{id}/edit', [KovetelmenyController::class, 'update']);
 //Preferáltcég
 Route::get('/preferalt', [PreferaltCegController::class, 'index']);
-Route::post('/fpreferalt/create', [PreferaltCegController::class, 'store']);
+Route::post('/preferalt/create/{diakId}/{cegId}', [PreferaltCegController::class, 'store']);
 Route::get('/preferalt/{id}', [PreferaltCegController::class, 'show']);
 Route::put('/preferalt/{id}/edit', [PreferaltCegController::class, 'update']);
 //C_D_Kapcsolat
 Route::get('/kapcsolatok', [CDKapcsolatController::class, 'index']);
+Route::get('/kapcsolatokNeve', [CDKapcsolatController::class, 'cdNevek']);
 Route::post('/kapcsolatok/create', [CDKapcsolatController::class, 'store']);
 Route::get('/kapcsolatok/{id}', [CDKapcsolatController::class, 'show']);
 Route::put('/kapcsolatok/{id}/edit', [CDKapcsolatController::class, 'update']);

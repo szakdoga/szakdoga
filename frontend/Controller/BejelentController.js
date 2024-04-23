@@ -12,10 +12,19 @@ class BejelntkezesController {
     console.log(szuloElem);
     const view = new BejelentkezesView(model.getAdat(), szuloElem);
 
-    window.addEventListener("bejelentkezes", function (event) {
+    window.addEventListener("bejelentkezes", async function (event) {
       event.preventDefault();
       console.log(event.detail);
-      dataService.bejelentkezes(event.detail.felNev, event.detail.jelszo);
+
+      const felhasznalo = await dataService.bejelentkezes(
+        event.detail.felNev,
+        event.detail.jelszo
+      );
+      console.log(felhasznalo);
+      const felhasznaloAdat = await dataService.felhasznaloAdat(felhasznalo.felNev);
+      localStorage.setItem("jogosultsag", felhasznaloAdat.jogId);
+      localStorage.setItem("diakId", felhasznaloAdat.userId);
+      window.location.href = "index.html";
     });
   }
 }

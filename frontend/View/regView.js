@@ -5,58 +5,62 @@ class RegisztracioView {
     this.#adat = adat;
     this.szuloElem = szuloElem;
     this.szuloElem.innerHTML = `
-        <form>
-        <div class="mb-3 mt-3">
-          <label for="felNev" class="form-label"> Felhasználónév: </label>
-          <input
-            type="text"
-            class="form-control"
-            id="felNev"
-            placeholder="felhasználónév"
-            name="felNev"
-            value="${this.#adat.felNev}"
-          />
-        </div>
-        <div class="mb-3">
-          <label for="jelszo" class="form-label"> Jelszó: </label>
-          <input
-            type="password"
-            class="form-control"
-            id="jelszo"
-            placeholder="jelszó"
-            name="jelszo"
-            value="${this.#adat.jelszo}"
-          />
-        </div>
-        <div class="mb-3">
-            <label for="jelszoMeg" class="form-label"> Jelszó megerősítése: </label>
+    <div class="container p-5">
+        <h2 class="regH2">Regisztráció</h2>
+        <form class="form">
+          <div class="mb-3 mt-3">
+            <label for="felNev" class="form-label"> Felhasználónév: </label>
             <input
-              type="password"
+              type="text"
               class="form-control"
-              id="jelszoMeg"
-              placeholder="jelszó megerősítése"
-              name="jelszoMeg"
-              value="${this.#jelszoMeg}"
+              id="felNev"
+              placeholder="felhasználónév"
+              name="felNev"
+              value="${this.#adat.felNev}"
             />
           </div>
           <div class="mb-3">
-          <label for="jogId">Diák/Cég</label>
-          <select id="jogId" name="jogId">
-            <option value="diak">Diák</option>
-            <option value="ceg">Cég</option>
-          </select>
-        </div>
-        <div class="text-center">
-          <button type="submit" class="btn btn-primary w-100" id="submit">Regisztráció</button>
+            <label for="jelszo" class="form-label"> Jelszó: </label>
+            <input
+              type="password"
+              class="form-control"
+              id="jelszo"
+              placeholder="Minimum 8 karakter, 1 nagybetű, 1 szám"
+              name="jelszo"
+              value="${this.#adat.jelszo}"
+            />
+          </div>
+          <div class="mb-3">
+              <label for="jelszoMeg" class="form-label"> Jelszó megerősítése: </label>
+              <input
+                type="password"
+                class="form-control"
+                id="jelszoMeg"
+                placeholder="jelszó megerősítése"
+                name="jelszoMeg"
+                value="${this.#jelszoMeg}"
+              />
+            </div>
+            <div class="mb-3">
+            <label for="jogId">Diák/Cég</label>
+            <select id="jogId" name="jogId">
+              <option value="ures"></option>
+              <option value="diak">Diák</option>
+              <option value="ceg">Cég</option>
+            </select>
+          </div>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary w-100" id="submit">Regisztráció</button>
 
-          <p>
-            Már van felhasználóneve?
-            <a class="nav-link text-info" href="bejelentkezes.html">
-              Bejelentkezés
-            </a>
-          </p>
-        </div>
+            <p>
+              Már van felhasználóneve?
+              <a class="nav-link text-info" href="bejelentkezes.html">
+                Bejelentkezés
+              </a>
+            </p>
+          </div>
       </form>
+      </div>
         `;
     this.formElem = this.szuloElem.querySelector("form");
     this.submitElem = this.formElem.querySelector("#submit");
@@ -95,7 +99,7 @@ class RegisztracioView {
     const jogId = document.getElementById("jogId");
     if (jogId.value == "diak") {
       this.#adat.jogId = 1;
-    } else {
+    } else if (jogId.value == "ceg"){
       this.#adat.jogId = 2;
     }
     console.log(this.#adat.jogId);
