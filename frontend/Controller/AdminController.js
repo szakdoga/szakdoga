@@ -32,11 +32,6 @@ class AdminController {
     });
   }
 
-
-  async megjelenitPreferaltCeg(lista, szuloElem) {
-    new AdminPreferalCegView(lista, szuloElem );
-  }
-
   async createCegDiakKapcsolat(adat) {
     try {
       await this.dataService.postData("api/kapcsolatok/create", adat);
@@ -51,6 +46,13 @@ class AdminController {
     }
     
   }
+
+
+  async megjelenitPreferaltCeg(lista, szuloElem) {
+    new AdminPreferalCegView(lista, szuloElem );
+  }
+
+
   async megjelenitCegDiakKapcsolat() {
     const adatok = await this.dataService.getData("/api/kapcsolatokNeve", (adatok) => {
       const view = new CegDiakNeveView(adatok, ".cdKapcsolat");
