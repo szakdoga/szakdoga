@@ -84,3 +84,4 @@ Route::get('/kapcsolatokNeve', [CDKapcsolatController::class, 'cdNevek']);
 Route::post('/kapcsolatok/create', [CDKapcsolatController::class, 'store']);
 Route::get('/kapcsolatok/{id}', [CDKapcsolatController::class, 'show']);
 Route::put('/kapcsolatok/{id}/edit', [CDKapcsolatController::class, 'update']);
+Route::delete('/kapcsolatok/{diakId}/{cegId}', [CDKapcsolatController::class, 'cdTorles']);

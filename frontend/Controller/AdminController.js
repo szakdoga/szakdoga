@@ -28,16 +28,6 @@ class AdminController {
     });
   }
 
-  async megjelenitCegDiakKapcsolat() {
-    const cegek = await this.dataService.getCegek();
-    const diakok = await this.dataService.getDiakok();
-    const adatok = { cegek: cegek, diakok: diakok };
-    new CegDiakKapcsolat(adatok, ".cdKapcsolat", this);
-    await this.dataService.getData("/api/kapcsolatokNeve", (adatok) => {
-      const model = new AdminModel(adatok);
-      new CegDiakNeveView(model.getAdat(), ".cdKapcsolat");
-    });
-  }
 
   async createCegDiakKapcsolat(adat) {
     try {
@@ -48,5 +38,38 @@ class AdminController {
       console.error(error);
     }
   }
+  async megjelenitCegDiakKapcsolat() {
+    const adatok = await this.dataService.getData("/api/kapcsolatokNeve", (adatok) => {
+      const view = new CegDiakNeveView(adatok, ".cdKapcsolat");
+      this.torles();
+    });
+  }
+
+  torles() {
+    $(".cdKapcsolat").on("click", ".torlesGomb", (event) => {
+      const diakId = $(event.target).closest("tr").data("diakId");
+      const cegId = $(event.target).closest("tr").data("cegId");
+      console.log(diakId,cegId);
+      this.deleteCegDiakKapcsolat(diakId, cegId);
+      
+    });
+  }
+
+  async deleteCegDiakKapcsolat(diakId, cegId) {
+    try {
+      await this.dataService.deleteData(`/api/kapcsolatok/${diakId}/${cegId}`,
+        () => {
+          alert("Kapcsolat sikeresen törölve.");
+        },
+        (error) => {
+          alert("Hiba történt a törlés során.");
+        }
+      );
+    } catch (error) {
+      console.error('Törlési hiba:', error);
+      alert("Hiba történt a törlés során.");
+    }
+  }
+
 }
 export default AdminController;

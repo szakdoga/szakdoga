@@ -49,6 +49,14 @@ class CDKapcsolatController extends Controller
         }
     }
 
+    public function cdTorles($diakId, $cegId)
+    {
+        DB::table('c_d_kapcsolats')
+            ->where('diakId', $diakId)
+            ->where('cegId', $cegId)
+            ->delete();
+    }
+
     public function cdNevek()
     {
         $cdNevek = DB::table('c_d_kapcsolats')

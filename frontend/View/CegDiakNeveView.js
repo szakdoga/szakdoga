@@ -1,4 +1,4 @@
-import TablaSorView from "./TablaSorView.js";
+import TablaSorViewCegDiakKapcs from "./TablaSorViewCegDiakKapcs.js";
 class CegDiakNeveView {
   #adat = {};
   constructor(adat, szuloElemSelector) {
@@ -14,11 +14,11 @@ class CegDiakNeveView {
     this.szuloElem.append(txt);
     this.tableElem = this.szuloElem.find("table");   
     this.tableElem.find("thead").append(
-      "<tr class='table-dark'><th>Cég</th><th>Diák</th>"
+      "<tr class='table-dark'><th>Cég</th><th>Diák</th><th></th>"
     );
 
     for (const key in this.#adat) {
-      new TablaSorView(this.#adat[key], this.tableElem);
+      new TablaSorViewCegDiakKapcs(this.#adat[key], this.tableElem);
     }
   }
 }
