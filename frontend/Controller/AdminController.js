@@ -2,6 +2,7 @@ import AdminModel from "../Model/AdminModel.js";
 import AdminView from "../View/AdminView.js";
 import AdminView2 from "../View/AdminView2.js";
 import CegDiakKapcsolat from "../View/CegDiakKapcsolatView.js";
+import CegDiakNeveView from "../View/CegDiakNeveView.js";
 import DataService from "../Model/DataService.js";
 
 class AdminController {
@@ -32,6 +33,10 @@ class AdminController {
     const diakok = await this.dataService.getDiakok();
     const adatok = { cegek: cegek, diakok: diakok };
     new CegDiakKapcsolat(adatok, ".cdKapcsolat", this);
+    await this.dataService.getData("/api/kapcsolatokNeve", (adatok) => {
+      const model = new AdminModel(adatok);
+      new CegDiakNeveView(model.getAdat(), ".cdKapcsolat");
+    });
   }
 
   async createCegDiakKapcsolat(adat) {
