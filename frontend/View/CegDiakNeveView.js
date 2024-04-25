@@ -10,7 +10,7 @@ class CegDiakNeveView {
   tablaMegjelenit() {
     let tablaNev ='<h2>Cégeknél lévő diákok</h2>';
     this.szuloElem.append(tablaNev);
-    let txt ='<table class="table table-hover table-responsive"><thead></thead><tbody></tbody></table>';
+    let txt ='<div class="table-responsive"><table class="table table-hover"><thead></thead><tbody></tbody></table></div>';
     this.szuloElem.append(txt);
     this.tableElem = this.szuloElem.find("table");   
     this.tableElem.find("thead").append(

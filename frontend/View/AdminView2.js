@@ -10,7 +10,7 @@ class AdminView2 {
   tablaMegjelenit() {
     let tablaNev ='<h2>Diákok</h2>';
     this.szuloElem.append(tablaNev);
-    let txt ='<table class="table table-hover table-responsive"><thead></thead><tbody></tbody></table>';
+    let txt ='<div class="table-responsive"><table class="table table-hover"><thead></thead><tbody></tbody></table></div>';
     this.szuloElem.append(txt);
     this.tableElem = this.szuloElem.find("table");   
     this.tableElem.find("thead").append(
