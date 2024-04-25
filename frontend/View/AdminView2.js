@@ -8,11 +8,13 @@ class AdminView2 {
     this.tablaMegjelenit();
   }
   tablaMegjelenit() {
-    let txt = '<table class="table table-bordered"></table>';
+    let tablaNev ='<h2>Diákok</h2>';
+    this.szuloElem.append(tablaNev);
+    let txt ='<table class="table table-hover table-responsive"><thead></thead><tbody></tbody></table>';
     this.szuloElem.append(txt);
-    this.tableElem = this.szuloElem.children("table");
-    this.tableElem.append(
-      "<thead><tr><th>Név</th><th>Születési Dátum</th><th>Email</th><th>Telefonszám</th><th>Fax</th><th>Lakcím</th><th>Neme</th><th>Állampolgársága</th></tr></thead>"
+    this.tableElem = this.szuloElem.find("table");   
+    this.tableElem.find("thead").append(
+      "<tr class='table-dark'><th>Név</th><th>Születési Dátum</th><th>Email</th><th>Telefonszám</th><th>Fax</th><th>Lakcím</th><th>Neme</th><th>Állampolgársága</th></tr>"
     );
 
     for (const key in this.#adat) {

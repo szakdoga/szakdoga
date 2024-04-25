@@ -22,7 +22,10 @@ class CegDiakKapcsolat {
           <option selected>Válassz diákot...</option>
         </select>
       </div>
-      <button class="btn btn-primary" id="kuldesGomb">Küldés</button>
+      <div>
+        <br>
+        <button class="btn btn-primary" id="kuldesGomb">Küldés</button>
+      </div>
     </div>
     `;
     this.szuloElem.append(txt);

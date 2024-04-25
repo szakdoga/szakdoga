@@ -8,10 +8,14 @@ class CegDiakNeveView {
     this.tablaMegjelenit();
   }
   tablaMegjelenit() {
-    let txt = '<table class="table table-bordered"></table>';
+    let tablaNev ='<h2>Cégeknél lévő diákok</h2>';
+    this.szuloElem.append(tablaNev);
+    let txt ='<table class="table table-hover table-responsive"><thead></thead><tbody></tbody></table>';
     this.szuloElem.append(txt);
-    this.tableElem = this.szuloElem.children("table");
-    this.tableElem.append("<thead><tr><th>Cég</th><th>Diák</th></thead>");
+    this.tableElem = this.szuloElem.find("table");   
+    this.tableElem.find("thead").append(
+      "<tr class='table-dark'><th>Cég</th><th>Diák</th>"
+    );
 
     for (const key in this.#adat) {
       new TablaSorView(this.#adat[key], this.tableElem);

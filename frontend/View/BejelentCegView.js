@@ -15,7 +15,7 @@ class BejelentCegView {
     this.tableElem = this.szuloElem.find("table");   
     this.tableElem.find("thead").append(
         "<tr class='table-dark'><th>Név</th><th>Szak</th><th> </th></tr>"
-      );
+    );
 
     for (const key in this.#adat) {
       new TablaSorViewOverRide(this.#adat[key], this.tableElem);
