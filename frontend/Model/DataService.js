@@ -69,21 +69,17 @@ class DataService {
     }
   }
 
-  async deleteData(url, id, csrfToken, successCallback, errorCallback) {
+  async deleteData(url, successCallback, errorCallback) {
     try {
-      await this.getToken();
-      const response = await axios.delete(url, {
-        data: { id: id },
-        headers: {
-          "X-CSRF-TOKEN": csrfToken,
-        },
-      });
-      location.reload(true);
-      console.log("Adatok sikeresen törölve!", response);
-      successCallback(response.data);
+      const response = await axios.delete(url);
+      if (response.status === 200) {
+        successCallback(response.data);
+      } else {
+        errorCallback('A szerver hibás státuszkódot válaszolt: ' + response.status);
+      }
     } catch (error) {
       console.error("Hiba történt a törlés során:", error);
-      errorCallback(error);
+      errorCallback('Hiba történt a törlés során: ' + error.message);
     }
   }
 
@@ -96,14 +92,14 @@ class DataService {
         jelszo: jelszo,
         _token: this.token,
       });
-      
+
       localStorage.setItem("bejelentkezett", "true");
- 
+
       const felhasznalo = {
         felNev: felNev,
         jelszo: jelszo,
       };
-      
+
       return felhasznalo;
     } catch (error) {
       console.error(
