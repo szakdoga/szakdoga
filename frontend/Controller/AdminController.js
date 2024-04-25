@@ -54,8 +54,13 @@ class AdminController {
 
 
   async megjelenitCegDiakKapcsolat() {
-    const adatok = await this.dataService.getData("/api/kapcsolatokNeve", (adatok) => {
-      const view = new CegDiakNeveView(adatok, ".cdKapcsolat");
+    const cegek = await this.dataService.getCegek();
+    const diakok = await this.dataService.getDiakok();
+    const adatok = { cegek: cegek, diakok: diakok };
+    new CegDiakKapcsolat(adatok, ".cdKapcsolat", this);
+    await this.dataService.getData("/api/kapcsolatokNeve", (adatok) => {
+      const model = new AdminModel(adatok);
+      new CegDiakNeveView(model.getAdat(), ".cdKapcsolat");
       this.torles();
     });
   }
