@@ -23,7 +23,7 @@ class BejelentDiakController {
 
     $(window).on("preferalFeltolt", (event) => {
       console.log(event.detail);
-      this.dataService.postData(`api/preferalt/create`, { diakId: event.detail.diakId, cegId: event.detail.cegId });
+      this.dataService.postData(`api/preferalt/create/${event.detail.diakId}/${event.detail.cegId}` );
     
     });
     

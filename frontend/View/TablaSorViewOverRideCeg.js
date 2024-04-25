@@ -8,18 +8,18 @@ class TablaSorViewWithButtonCeg extends TablaSorView {
                 txt += `<td>${this.adat[key]}</td>`
             }
         }
-        txt += `<td><button id="Profil" type="button" class="btn btn-primary btn-rounded btn-block">Profil</button></td>`;
-        txt += `<td><button id="Preferal" type="button" class="btn btn-primary btn-rounded btn-block">Preferál</button></td>`;
+        txt += `<td><button type="button" class="btn btn-primary btn-rounded btn-block">Profil</button></td>`;
+        txt += `<td><button type="button" class="btn btn-primary btn-rounded btn-block">Preferál</button></td>`;
         txt += `</tr>`;
         this.tablaElem.append(txt);
-        this.tablaElem.find('#Profil').on('click', () => {
+        let buttons = this.tablaElem.find('button');
+        buttons.eq(buttons.length - 2).on('click', () => {
             this.#esemenyTrigger('profilMegjelenit', this.adat);
         });
-        this.tablaElem.find('#Preferal').on('click', () => {
-            const diakId = localStorage.getItem("diakId");
-            this.#esemenyTrigger('preferalFeltolt', { diakId: diakId, cegId: this.adat.userId });
+        buttons.last().on('click', () => {
+            const diakId = parseInt(localStorage.getItem("diakId"), 10);
+            this.#esemenyTrigger('preferalFeltolt',  { diakId: diakId, cegId: this.adat.userId });
         });
-       
     }
 
     #esemenyTrigger(esemenyNev, adat) {
