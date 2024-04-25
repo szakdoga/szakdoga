@@ -43,7 +43,7 @@ main {
   filter: drop-shadow(0 0 2px #000000);
   border-radius: 5px;
   width: 360px;
-  height: auto; /* Change this */
+  height: auto;  
   background-color: #ffffff;
   padding: 40px;
 }
@@ -81,3 +81,6 @@ main {
   background: black;
   color: #fff;
 }
+
+
+ 

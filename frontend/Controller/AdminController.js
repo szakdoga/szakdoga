@@ -4,6 +4,7 @@ import AdminView2 from "../View/AdminView2.js";
 import CegDiakKapcsolat from "../View/CegDiakKapcsolatView.js";
 import CegDiakNeveView from "../View/CegDiakNeveView.js";
 import DataService from "../Model/DataService.js";
+import AdminPreferalCegView from "../View/AdminPreferalCegView.js";
 
 class AdminController {
   constructor() {
@@ -11,6 +12,9 @@ class AdminController {
     this.megjelenitCegek();
     this.megjelenitDiakok();
     this.megjelenitCegDiakKapcsolat();
+    this.dataService.getData("api/preferalt_cegek", (adatok) =>
+      this.megjelenitPreferaltCeg(adatok, $(".preferaltCeg"))
+    );
   }
 
   async megjelenitCegek() {
@@ -29,14 +33,23 @@ class AdminController {
   }
 
 
+  async megjelenitPreferaltCeg(lista, szuloElem) {
+    new AdminPreferalCegView(lista, szuloElem );
+  }
+
   async createCegDiakKapcsolat(adat) {
     try {
-      await this.dataService.postData('api/kapcsolatok/create',adat);
+      await this.dataService.postData("api/kapcsolatok/create", adat);
       alert("Kapcsolat sikeresen létrehozva");
+      const cegek = await this.dataService.getData("/api/cegek");
+      const diakok = await this.dataService.getData("/api/diakok");
+      document.querySelector(".cdKapcsolat").innerHTML = '';
+      this.megjelenitCegDiakKapcsolat({ cegek: cegek, diakok: diakok });
     } catch (error) {
       alert("Hiba történt a kapcsolat létrehozása során");
       console.error(error);
     }
+    
   }
   async megjelenitCegDiakKapcsolat() {
     const cegek = await this.dataService.getCegek();

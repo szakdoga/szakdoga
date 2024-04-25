@@ -51,3 +51,16 @@ p:not(:last-child) {
 .nav-link:hover {
   color: #ddd;
 }
+
+
+@media (max-width: 800px) {
+  .bord, main {
+    width: 90%;  
+  }
+}
+
+@media (max-width: 500px) {
+  .bord, main {
+    width: 95%;  
+  }
+}

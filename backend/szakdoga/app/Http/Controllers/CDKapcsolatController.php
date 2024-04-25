@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 
 class CDKapcsolatController extends Controller
 {
-    
+
     public function index()
     {
         return CDKapcsolat::all();
@@ -49,22 +49,22 @@ class CDKapcsolatController extends Controller
         }
     }
 
+    public function cdNevek()
+    {
+        $cdNevek = DB::table('c_d_kapcsolats')
+            ->join('cegs', 'c_d_kapcsolats.cegId', '=', 'cegs.userId')
+            ->join('diaks', 'c_d_kapcsolats.diakId', '=', 'diaks.userId')
+            ->select('cegs.neve as Ceg_nev', 'diaks.nev as Diak_nev')
+            ->get();
+
+        return response()->json($cdNevek);
+    }
+
     public function cdTorles($diakId, $cegId)
     {
         DB::table('c_d_kapcsolats')
             ->where('diakId', $diakId)
             ->where('cegId', $cegId)
             ->delete();
-    }
-
-    public function cdNevek()
-    {
-        $cdNevek = DB::table('c_d_kapcsolats')
-            ->join('cegs', 'c_d_kapcsolats.cegId', '=', 'cegs.userId')
-            ->join('diaks', 'c_d_kapcsolats.diakId', '=', 'diaks.userId')
-            ->select('cegs.neve as Ceg_nev','diaks.nev as Diak_nev')
-            ->get();
-
-        return response()->json($cdNevek);
     }
 }
