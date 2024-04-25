@@ -10,7 +10,9 @@ class TablaSorViewCegDiakKapcs {
         let txt = `<tr data-diak-id="${this.#obj.diakId}" data-ceg-id="${this.#obj.cegId}">`;
         console.log(this.#obj.diakId,this.#obj.cegId);
         for (const key in this.#obj) {
-            txt += `<td>${this.#obj[key]}</td>`;
+            if (key !== 'diakId' && key !== 'cegId') {
+                txt += `<td>${this.#obj[key]}</td>`;
+            }
         }
         txt += `<td><button class='torlesGomb'>🗑️</button></td>`;
         txt += `</tr>`;

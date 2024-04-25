@@ -77,17 +77,13 @@ class AdminController {
 
   async deleteCegDiakKapcsolat(diakId, cegId) {
     try {
-      await this.dataService.deleteData(`/api/kapcsolatok/${diakId}/${cegId}`,
-        () => {
-          alert("Kapcsolat sikeresen törölve.");
-        },
-        (error) => {
-          alert("Hiba történt a törlés során.");
-        }
-      );
+      await this.dataService.deleteData(`/api/kapcsolatok/${diakId}/${cegId}`);
+      alert("Kapcsolat sikeresen törölve");
+ 
+      await this.megjelenitCegDiakKapcsolat();
     } catch (error) {
-      console.error('Törlési hiba:', error);
-      alert("Hiba történt a törlés során.");
+      alert("Hiba történt a kapcsolat törlése során");
+      console.error(error);
     }
   }
 

@@ -54,7 +54,7 @@ class CDKapcsolatController extends Controller
         $cdNevek = DB::table('c_d_kapcsolats')
             ->join('cegs', 'c_d_kapcsolats.cegId', '=', 'cegs.userId')
             ->join('diaks', 'c_d_kapcsolats.diakId', '=', 'diaks.userId')
-            ->select('cegs.neve as Ceg_nev', 'diaks.nev as Diak_nev')
+            ->select('cegs.neve as Ceg_nev', 'diaks.nev as Diak_nev','c_d_kapcsolats.diakId', 'c_d_kapcsolats.cegId' )
             ->get();
 
         return response()->json($cdNevek);
