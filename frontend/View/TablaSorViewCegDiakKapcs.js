@@ -14,7 +14,7 @@ class TablaSorViewCegDiakKapcs {
                 txt += `<td>${this.#obj[key]}</td>`;
             }
         }
-        txt += `<td><button class='torlesGomb'>🗑️</button></td>`;
+        txt += `<td><button class="btn btn-primary btn-rounded btn-block" id='torlesGomb'>🗑️</button></td>`;
         txt += `</tr>`;
         this.tablaElem.append(txt);
     }

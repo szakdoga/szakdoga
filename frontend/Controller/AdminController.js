@@ -51,7 +51,13 @@ class AdminController {
 
   async createCegDiakKapcsolat(adat) {
     try {
-      await this.dataService.postData("api/kapcsolatok/create", adat);
+      const response = await this.dataService.postData("api/kapcsolatok/create", adat);
+      
+      if (response.error) {
+        alert("A diák már kapcsolódik egy céghez");
+        return;
+      }
+  
       alert("Kapcsolat sikeresen létrehozva");
       const cegek = await this.dataService.getData("/api/cegek");
       const diakok = await this.dataService.getData("/api/diakok");
@@ -80,7 +86,7 @@ class AdminController {
   }
 
   torles() {
-    $(".cdKapcsolat").on("click", ".torlesGomb", (event) => {
+    $(".cdKapcsolat").on("click", "#torlesGomb", (event) => {
       const diakId = $(event.target).closest("tr").data("diakId");
       const cegId = $(event.target).closest("tr").data("cegId");
       console.log(diakId, cegId);

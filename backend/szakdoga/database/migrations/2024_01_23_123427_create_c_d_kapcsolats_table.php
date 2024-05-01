@@ -19,6 +19,8 @@ return new class extends Migration
             $table->foreignId('diakId')->references('userId')->on('diaks');
             $table->foreignId('cegId')->references('userId')->on('cegs');
             $table->timestamps();
+
+            $table->unique('diakId');
         });
 
         CDKapcsolat::create(["diakId"=>1,"cegId"=>3]);
