@@ -58,7 +58,7 @@ class DiakController extends Controller
 
     public function listDiakok()
     {
-        $diakok = DB::table('diaks')->select('nev', 'szulDatum', 'email', 'tel', 'fax', 'lakcim', 'neme', 'allampolg')->get();
+        $diakok = DB::table('diaks')->select('userId','nev', 'szulDatum', 'email', 'tel', 'fax', 'lakcim', 'neme', 'allampolg')->get();
 
         return response()->json($diakok);
     }

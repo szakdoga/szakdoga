@@ -69,7 +69,19 @@ class RegisztracioView {
 
   jelszoEllenorzes() {
     const jelszoInput = document.getElementById("jelszoMeg");
+    const jelszo = document.getElementById("jelszo");
     this.#jelszoMeg = this.szuloElem.querySelector("#jelszoMeg").value;
+    const regexJelszo= this.szuloElem.querySelector("#jelszo").value;
+
+    if (!this.regexJelszoValidalas(regexJelszo)) {
+      jelszo.value = "";
+      jelszo.placeholder = "Minimum 8 karakter, 1 nagybetű, 1 szám";
+      jelszo.classList.add("is-invalid");
+      jelszoInput.value = "";
+    
+      jelszoInput.classList.add("is-invalid");
+      return false;
+    }
 
     if (this.#adat.jelszo === this.#jelszoMeg) {
       console.log("Egyezik");
@@ -81,6 +93,11 @@ class RegisztracioView {
       jelszoInput.classList.add("is-invalid");
       return false;
     }
+  }
+
+  regexJelszoValidalas(jelszo) {
+    const regex = /^(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{8,}$/;
+    return regex.test(jelszo);
   }
 
   onSubmit(event) {

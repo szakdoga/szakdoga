@@ -48,7 +48,7 @@ class CegController extends Controller
     }
     public function listCegek()
     {
-        $cegek = DB::table('cegs')->select('neve', 'tel', 'kapcsNeve', 'cim', 'email')->get();
+        $cegek = DB::table('cegs')->select('userId','neve', 'tel', 'kapcsNeve', 'cim', 'email')->get();
 
         return response()->json($cegek);
     }

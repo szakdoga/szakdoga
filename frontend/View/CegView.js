@@ -1,9 +1,9 @@
 class CegView {
-    #adat = {};
-    constructor(adat, szuloElem) {
-      this.#adat = adat;
-      this.szuloElem = szuloElem;
-      this.szuloElem.innerHTML = `
+  #adat = {};
+  constructor(adat, szuloElem) {
+    this.#adat = adat;
+    this.szuloElem = szuloElem;
+    this.szuloElem.innerHTML = `
       <div class="container p-5">
         <h2 class="cegH2">Adatok</h2>
             <form class="adatokForm">
@@ -64,32 +64,74 @@ class CegView {
           </form>
           </div>
             `;
-      this.formElem = this.szuloElem.querySelector("form");
-      this.submitElem = this.formElem.querySelector("#submit");
-      this.submitElem.addEventListener("click", this.onSubmit.bind(this));
-    }
-  
-    onSubmit(event) {
-      event.preventDefault();
-      this.#adatGyujt();
+    this.formElem = this.szuloElem.querySelector("form");
+    this.submitElem = this.formElem.querySelector("#submit");
+    this.submitElem.addEventListener("click", this.onSubmit.bind(this));
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    this.#adatGyujt();
+    if (this.adatokEllenorzese()) {
       this.#esemenyTrigger("post");
     }
   
-    #adatGyujt() {
-      this.#adat.neve = document.getElementById("neve").value;
-      this.#adat.tel = document.getElementById("tel").value;
-      this.#adat.kapcsNeve = document.getElementById("kapcsNeve").value;
-      this.#adat.cim = document.getElementById("cim").value;
-      this.#adat.email = document.getElementById("email").value;
-      this.#adat.userId = JSON.parse(localStorage.getItem("userId"));
-    }
-  
-    #esemenyTrigger(esemenyNev) {
-      const esemeny = new CustomEvent(esemenyNev, { detail: this.#adat });
-      window.dispatchEvent(esemeny);
-    }
-
   }
-  
-  export default CegView;
-  
+
+  #adatGyujt() {
+    this.#adat.neve = document.getElementById("neve").value;
+    this.#adat.tel = document.getElementById("tel").value;
+    this.#adat.kapcsNeve = document.getElementById("kapcsNeve").value;
+    this.#adat.cim = document.getElementById("cim").value;
+    this.#adat.email = document.getElementById("email").value;
+    this.#adat.userId = JSON.parse(localStorage.getItem("userId"));
+  }
+
+  #esemenyTrigger(esemenyNev) {
+    const esemeny = new CustomEvent(esemenyNev, { detail: this.#adat });
+    window.dispatchEvent(esemeny);
+  }
+
+  adatokEllenorzese() {
+    const neve = $("#neve");
+    const tel = $("#tel");
+    const kapcsNeve = $("#kapcsNeve");
+    const cim = $("#cim");
+    
+    if (!this.regexValidalas(neve.val(), /^[a-zA-Z\s]*$/)) {
+      neve.val("");
+      neve.attr("placeholder", "Csak betűt tartalmazhat.");
+      neve.addClass("invalid");  
+      return false;
+    } 
+    
+    
+    if (!this.regexValidalas(tel.val(), /^\+(?:[0-9] ?){6,14}[0-9]$/)) {
+      tel.val("");
+      tel.attr("placeholder", "Létező telefonszámot adjon meg.");
+      tel.addClass("invalid");  
+      return false;
+    }
+    
+    if (!this.regexValidalas(kapcsNeve.val(), /^[a-zA-Z\s]*$/)) {
+      kapcsNeve.val("");
+      kapcsNeve.attr("placeholder", "Csak betűt tartalmazhat.");
+      kapcsNeve.addClass("invalid");  
+      return false;
+    }
+    
+    if (!this.regexValidalas(cim.val(), /^.+$/)) {
+      cim.val("");
+      cim.attr("placeholder", "Adjon meg egy címet.");
+      cim.addClass("invalid");  
+      return false;
+    }
+    return true;
+  }
+
+  regexValidalas(value, regex) {
+    return regex.test(value);
+  }
+}
+
+export default CegView;
