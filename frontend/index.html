@@ -10,6 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="main.js" type="module"></script>
     <link rel="stylesheet" href="alapstilus.css" />
     <title>Fejvadász</title>
@@ -27,17 +28,24 @@
       </ul>
     </nav>
     <article>
+
       <div class="offcanvas offcanvas-start" id="demo">
         <div class="offcanvas-header">
           <h1 class="offcanvas-title">Szerkesztés</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="offcanvas"
+          ></button>
         </div>
-        <div class="offcanvas-body">
-        
-          
-        </div>
+        <div class="offcanvas-body"></div>
       </div>
       <div class="diakok">
+        <div id="keresoAblak">
+          <div id="searchContainer"></div>
+          <div id="diakIgeny" class="collapse custom-class">
+          </div>
+        </div>
         <div class="diakTablazat"></div>
       </div>
       <div class="cegek">
@@ -51,28 +59,51 @@
     <script>
       document.addEventListener("DOMContentLoaded", (event) => {
         let navItem = document.querySelector(".navbar-nav");
+        const jogosultsag = localStorage.getItem("jogosultsag");
         if (localStorage.getItem("bejelentkezett") === "true") {
-          navItem.innerHTML = `
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.html">Kezdőlap</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#" id="kijelentkezes">Kijelentkezés</a>
-                    </li>`;
+          let jog = "";
+          if (jogosultsag == 1) {
+            jog =
+              '<a class="btn btn-primary" id="DiakSajatProf" href="#">Saját profil (Diák)</a>';
+          } else if (jogosultsag == 2) {
+            jog =
+              '<a class="btn btn-primary" id="CegSajatProf" href="#">Saját profil (Cég)</a>';
+          } else if (jogosultsag == 3) {
+            jog =
+              '<a class="btn btn-primary" id="AdminSajatProf" href="#">Admin</a>';
+          }
 
-          document.getElementById("kijelentkezes").addEventListener("click", function (event) {
+          navItem.innerHTML = `
+ 
+          <ul class="navbar-nav">
+            <li class="nav-item">
+              <a class="nav-link" href="index.html">Kezdőlap</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#" id="kijelentkezes">Kijelentkezés</a>
+            </li>
+          </ul>
+          <div class="topnav-right">
+            <li class="nav-item">
+              ${jog}
+            </li>
+          </div>`;
+
+          document
+            .getElementById("kijelentkezes")
+            .addEventListener("click", function (event) {
               event.preventDefault();
               localStorage.removeItem("bejelentkezett");
               window.location.href = "bejelentkezes.html";
             });
         } else {
           navItem.innerHTML = `
-                    <li class="nav-item">
-                        <a class="nav-link" href="bejelentkezes.html">Bejelentkezés</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="regisztracio.html">Regisztráció</a>
-                    </li>`;
+            <li class="nav-item">
+              <a class="nav-link" href="bejelentkezes.html">Bejelentkezés</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="regisztracio.html">Regisztráció</a>
+            </li>`;
         }
       });
     </script>

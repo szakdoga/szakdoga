@@ -49,7 +49,6 @@ class AdminPreferalCegView {
       this.tableElem.find('tbody tr').show();
       return;
     }
-
     this.tableElem.find('tbody tr').hide().filter(function() {
       return $(this).find('td').filter(function() {
         return $(this).text() === nev;

@@ -52,7 +52,7 @@ class DiakController extends Controller
     {
         return DB::table('diaks')
             ->join('szaks', 'diaks.szakId', '=', 'szaks.szakId')
-            ->select('diaks.userId','diaks.nev', 'szaks.megnevezes')
+            ->select('diaks.userId','diaks.nev', 'szaks.megnevezes', 'szaks.szakId')
             ->get();
     }
 

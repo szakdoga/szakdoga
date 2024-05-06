@@ -11,6 +11,7 @@ $(function () {
   } else if (currentUrl.includes("regisztracio.html") || currentUrl.includes("diak.html") || currentUrl.includes("ceg.html")) {
     new RegController();
   } else if (currentUrl.includes("index.html") || currentUrl.includes("diakProfil.html") || currentUrl.includes("cegProfil.html")){
+ 
     if (jogosultsag == 1) {
       new BejelentDiakController();
     } else if (jogosultsag == 2) {
@@ -22,3 +23,5 @@ $(function () {
     } 
   }
 });
+
+

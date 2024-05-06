@@ -50,4 +50,12 @@ class PreferaltCegController extends Controller
 
         return response()->json($results);
     }
+
+    public function preferaltTorles($diakId, $cegId)
+    {
+        DB::table('preferalt_cegs')
+            ->where('diakId', $diakId)
+            ->where('cegId', $cegId)
+            ->delete();
+    }
 }

@@ -54,18 +54,31 @@ class AdminController {
       const response = await this.dataService.postData("api/kapcsolatok/create", adat);
       
       if (response.error) {
-        alert("A diák már kapcsolódik egy céghez");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Diák már kapcsolódik egy céghez!",
+        });
         return;
       }
   
-      alert("Kapcsolat sikeresen létrehozva");
+      Swal.fire({
+        icon: "success",
+        text: "Kapcsolat sikeresen létrehozva!",
+        showConfirmButton: false,
+        timer: 750,
+      });
       const cegek = await this.dataService.getData("/api/cegek");
       const diakok = await this.dataService.getData("/api/diakok");
       document.querySelector(".cdKapcsolat").innerHTML = "";
       this.megjelenitCegDiakKapcsolat({ cegek: cegek, diakok: diakok });
     } catch (error) {
-      alert("Hiba történt a kapcsolat létrehozása során");
-      console.error(error);
+      Swal.fire({
+        icon: "warning",
+        title: "Oops...",
+        text: "Diák már kapcsolódik egy céghez!",
+      });
+     
     }
   }
 
@@ -89,20 +102,20 @@ class AdminController {
     $(".cdKapcsolat").on("click", "#torlesGomb", (event) => {
       const diakId = $(event.target).closest("tr").data("diakId");
       const cegId = $(event.target).closest("tr").data("cegId");
-      console.log(diakId, cegId);
       this.deleteCegDiakKapcsolat(diakId, cegId);
     });
   }
 
   async deleteCegDiakKapcsolat(diakId, cegId) {
     try {
-      await this.dataService.deleteData(`/api/kapcsolatok/${diakId}/${cegId}`);
-
-      await this.megjelenitCegDiakKapcsolat();
+      await this.dataService.deleteData2(`/api/kapcsolatok/${diakId}/${cegId}`);
+      $(`tr[data-diak-id="${diakId}"][data-ceg-id="${cegId}"]`).remove();
+   
     } catch (error) {
       console.error(error);
     }
   }
+ 
 
   cegAdatMegj(adat, szuloElem) {
     let data = adat;

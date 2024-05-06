@@ -16,10 +16,8 @@ class DataService {
   }
 
   async getData(url, dataCallback) {
-    console.log(url);
     try {
       const response = await axios.get(url);
-      console.log(response);
       dataCallback(response.data);
     } catch (error) {
       console.error("Hiba történt:", error);
@@ -28,14 +26,12 @@ class DataService {
 
   async postData(url, adat) {
     try {
-      /*await this.getToken();
-      data._token = this.token;*/
-      console.log(url);
-      console.log(adat);
+ 
       const response = await axios.post(url, adat);
       return response.data;
     } catch (error) {
       console.error("Hiba az adatok küldése közben:", error);
+      return { status: 500, error: error };
     }
   }
   async postData2(url, data) {
@@ -66,6 +62,19 @@ class DataService {
       console.log(response);
     } catch (error) {
       console.error(error);
+    }
+  }
+  async deleteData2(url) {
+    try {
+      const response = await axios.delete(url);
+      if (response.status === 200) {
+        console.log("Adatok sikeresen törölve a szerverről.");
+         
+      } else {
+        console.error("Szerver hiba:", response.data.error);
+      }
+    } catch (error) {
+      console.error("Hiba az adatok törlése közben:", error);
     }
   }
 

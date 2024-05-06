@@ -9,8 +9,11 @@ class BejelentDiakView {
   }
   tablaMegjelenit() {
     let kereso ='<input type="text" id="kereso" placeholder="Keresés..." style="width: 300px; height: 30px; border-radius: 15px;">';
-    this.szuloElem.append(kereso);
+ 
     let txt ='<div class="table-responsive"><table class="table table-hover"><thead></thead><tbody></tbody></table></div>';
+   
+    this.searchContainer = $(document).find("#searchContainer");
+    this.searchContainer.append(kereso);
     this.szuloElem.append(txt);
     this.tableElem = this.szuloElem.find("table");   
     this.tableElem.find("thead").append(

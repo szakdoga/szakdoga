@@ -79,6 +79,7 @@ Route::post('/preferalt/create/{diakId}/{cegId}', [PreferaltCegController::class
 Route::get('/preferalt/{id}', [PreferaltCegController::class, 'show']);
 Route::put('/preferalt/{id}/edit', [PreferaltCegController::class, 'update']);
 Route::get('/preferalt_cegek', [PreferaltCegController::class, 'preferaltCegTabla']);
+Route::delete('/preferalt_cegek/torles/{diakId}/{cegId}', [PreferaltCegController::class, 'preferaltTorles']);
 //C_D_Kapcsolat
 Route::get('/kapcsolatok', [CDKapcsolatController::class, 'index']);
 Route::get('/kapcsolatokNeve', [CDKapcsolatController::class, 'cdNevek']);

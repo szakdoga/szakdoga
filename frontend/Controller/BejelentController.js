@@ -14,17 +14,42 @@ class BejelntkezesController {
 
     window.addEventListener("bejelentkezes", async function (event) {
       event.preventDefault();
-      console.log(event.detail);
 
       const felhasznalo = await dataService.bejelentkezes(
         event.detail.felNev,
         event.detail.jelszo
       );
-      console.log(felhasznalo);
-      const felhasznaloAdat = await dataService.felhasznaloAdat(felhasznalo.felNev);
-      localStorage.setItem("jogosultsag", felhasznaloAdat.jogId);
-      localStorage.setItem("diakId", felhasznaloAdat.userId);
-      window.location.href = "index.html";
+
+      if (felhasznalo) {
+        const felhasznaloAdat = await dataService.felhasznaloAdat(
+          felhasznalo.felNev
+        );
+
+        if (felhasznaloAdat) {
+          localStorage.setItem("jogosultsag", felhasznaloAdat.jogId);
+          localStorage.setItem("diakId", felhasznaloAdat.userId);
+          Swal.fire({
+            text: "Sikeres bejelentkezés!",
+            icon: "success",
+            showConfirmButton: false,
+            timer: 1500
+          }).then(() => {
+            window.location.href = "index.html";
+          });
+        } else {
+          Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Nincs ilyen felhasználó!",
+          });
+        }
+      } else {
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Nem sikerült a bejelentkezés!",
+        });
+      }
     });
   }
 }
