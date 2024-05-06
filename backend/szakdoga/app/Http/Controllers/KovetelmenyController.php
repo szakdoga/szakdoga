@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kovetelmeny;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class KovetelmenyController extends Controller
 {
@@ -37,5 +38,16 @@ class KovetelmenyController extends Controller
         }
 
         return $kovetelmeny;
+    }
+
+    public function kovetelmenyTabla()
+    {
+        $results = DB::table('kovetelmenies')
+            ->join('szaks', 'kovetelmenies.szakId', '=', 'szaks.szakId')
+            ->join('cegs', 'kovetelmenies.cegId', '=', 'cegs.userId')
+            ->select('cegs.neve', 'szaks.megnevezes', 'kovetelmenies.fo')
+            ->get();
+
+        return response()->json($results);
     }
 }

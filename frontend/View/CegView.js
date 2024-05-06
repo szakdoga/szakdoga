@@ -98,12 +98,12 @@ class CegView {
     const kapcsNeve = $("#kapcsNeve");
     const cim = $("#cim");
     
-    if (!this.regexValidalas(neve.val(), /^[a-zA-Z\s]*$/)) {
+    if (!this.regexValidalas(neve.val(), /^[a-zA-Z\sáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*$/)) {
       neve.val("");
       neve.attr("placeholder", "Csak betűt tartalmazhat.");
       neve.addClass("invalid");  
       return false;
-    } 
+    }
     
     
     if (!this.regexValidalas(tel.val(), /^\+(?:[0-9] ?){6,14}[0-9]$/)) {
@@ -113,7 +113,7 @@ class CegView {
       return false;
     }
     
-    if (!this.regexValidalas(kapcsNeve.val(), /^[a-zA-Z\s]*$/)) {
+    if (!this.regexValidalas(kapcsNeve.val(), /^[a-zA-Z\sáéíóöőúüűÁÉÍÓÖŐÚÜŰ]*$/)) {
       kapcsNeve.val("");
       kapcsNeve.attr("placeholder", "Csak betűt tartalmazhat.");
       kapcsNeve.addClass("invalid");  
