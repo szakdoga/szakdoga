@@ -71,9 +71,10 @@ Route::put('/admin/{id}/edit', [AdminController::class, 'update']);
 //Kovetelmeny
 Route::get('/kovetelmenyek', [KovetelmenyController::class, 'index']);
 Route::post('/kovetelmenyek/create', [KovetelmenyController::class, 'store']);
+Route::get('/kovetelmenyek/lista', [KovetelmenyController::class, 'kovetelmenyTabla']);
 Route::get('/kovetelmenyek/{id}', [KovetelmenyController::class, 'show']);
 Route::put('/kovetelmenyek/{id}/edit', [KovetelmenyController::class, 'update']);
-Route::get('/kovetelmenyek/lista', [KovetelmenyController::class, 'kovetelmenyTabla']);
+
 //Preferáltcég
 Route::get('/preferalt', [PreferaltCegController::class, 'index']);
 Route::post('/preferalt/create/{diakId}/{cegId}', [PreferaltCegController::class, 'store']);
