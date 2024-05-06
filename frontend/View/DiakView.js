@@ -117,7 +117,9 @@ class DiakView {
   onSubmit(event) {
     event.preventDefault();
     this.#adatGyujt();
-    this.#esemenyTrigger("post");
+    if (this.adatokEllenorzese()) {
+      this.#esemenyTrigger("post");
+    }
   }
 
   #adatGyujt() {
@@ -129,7 +131,7 @@ class DiakView {
     this.#adat.lakcim = document.getElementById("lakcim").value;
     this.#adat.neme = document.getElementById("neme").value;
     this.#adat.allampolg = document.getElementById("allampolg").value;
-    //this.#adat.atlag = document.getElementById("atlag").value;
+ 
     this.#adat.szakId = document.getElementById("szakId").value;
     this.#adat.userId = JSON.parse(localStorage.getItem("userId"));
   }
@@ -138,6 +140,34 @@ class DiakView {
     const esemeny = new CustomEvent(esemenyNev, { detail: this.#adat });
     window.dispatchEvent(esemeny);
   }
+
+  adatokEllenorzese() {
+    const email = $("#email");
+    const tel = $("#tel");
+
+    if (!this.regexValidalas(email.val(), /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
+      email.val("");
+      email.attr("placeholder", "Érvényes email címet adjon meg.");
+      email.addClass("invalid");  
+      return false;
+    }
+
+    if (!this.regexValidalas(tel.val(), /^\+(?:[0-9] ?){6,14}[0-9]$/)) {
+      tel.val("");
+      tel.attr("placeholder", "Létező telefonszámot adjon meg.");
+      tel.addClass("invalid");  
+      return false;
+    }
+
+
+    return true;
+  }
+
+  regexValidalas(value, regex) {
+    return regex.test(value);
+  }
+
+
 }
 
 export default DiakView;
