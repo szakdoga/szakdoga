@@ -5,6 +5,7 @@ import CegDiakKapcsolat from "../View/CegDiakKapcsolatView.js";
 import CegDiakNeveView from "../View/CegDiakNeveView.js";
 import DataService from "../Model/DataService.js";
 import AdminPreferalCegView from "../View/AdminPreferalCegView.js";
+import AdminKovetelmenyView from "../View/AdminKovetelmenyView.js";
 class AdminController {
   constructor() {
     this.dataService = new DataService();
@@ -14,6 +15,8 @@ class AdminController {
     this.dataService.getData("api/preferalt_cegek", (adatok) =>
       this.megjelenitPreferaltCeg(adatok, $(".preferaltCeg"))
     );
+
+    this.megjelenitKovetelmeny();
 
     $(window).on("szerkesztes", (event) => {
  
@@ -46,6 +49,13 @@ class AdminController {
       console.log(adatok);
       const model = new AdminModel(adatok);
       new AdminView2(model.getAdat(), ".diakok");
+    });
+  }
+
+  async megjelenitKovetelmeny() {
+    await this.dataService.getData("/api/kovetelmenyek/lista", (adatok) => {
+      const model = new AdminModel(adatok);
+      new AdminKovetelmenyView(model.getAdat(), ".kovetelmeny");
     });
   }
 
